@@ -5,6 +5,7 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
+    <GlobalStyles />
     <App />
   </React.StrictMode>,
   document.querySelector('#app')
