@@ -1,5 +1,5 @@
 import React from 'react';
-import MeditationPlayer from './meditationPlayer';
+import MeditationPlayer from './MeditationPlayer';
 
 export default {
   title: 'Page/Player',
