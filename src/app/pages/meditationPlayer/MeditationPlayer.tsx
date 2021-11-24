@@ -3,6 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import useSound from 'use-sound';
 import gongSound from './assets/gong-sound.wav';
+import PlayIcon from './assets/PlayIcon';
+import PauseIcon from './assets/PauseIcon';
 
 type MeditationPlayerProps = {
   hours: number;
@@ -46,13 +48,14 @@ export default function MeditationPlayer({
     <>
       <PageContainer>
         <ExitButton>Exit</ExitButton>
+
         <PlayButton onClick={togglePlayPause}>
-          {isPlaying ? 'Pause' : 'Play'}
+          {isPlaying ? <PauseIcon /> : <PlayIcon />}
         </PlayButton>
         <p>{`${h.toString().padStart(2, '0')}:${m
           .toString()
           .padStart(2, '0')}:${s.toString().padStart(2, '0')}`}</p>
-        <div>{over ? "Time's up!" : ''}</div>
+        <div>{over ? 'Meditation stopped' : ''}</div>
       </PageContainer>
     </>
   );
