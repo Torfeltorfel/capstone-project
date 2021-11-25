@@ -5,7 +5,7 @@ import useSound from 'use-sound';
 import gongSound from './assets/gong-sound.wav';
 import PlayIcon from './assets/PlayIcon';
 import PauseIcon from './assets/PauseIcon';
-import BackgroundUnderwater from './assets/bg.jpeg';
+import BackgroundImage from './assets/bg.jpeg';
 
 type MeditationPlayerProps = {
   hours: number;
@@ -47,15 +47,15 @@ export default function MeditationPlayer({
 
   return (
     <>
-      <PageContainer image={BackgroundUnderwater}>
+      <PageContainer>
         <PlayButtonContainer>
           <PlayButton onClick={togglePlayPause}>
             {isPlaying ? <PauseIcon /> : <PlayIcon />}
           </PlayButton>
         </PlayButtonContainer>
-        <p>{`${h.toString().padStart(2, '0')}:${m
+        <Countdown>{`${h.toString().padStart(2, '0')}:${m
           .toString()
-          .padStart(2, '0')}:${s.toString().padStart(2, '0')}`}</p>
+          .padStart(2, '0')}:${s.toString().padStart(2, '0')}`}</Countdown>
         <div>{over ? 'Meditation stopped' : ''}</div>
       </PageContainer>
     </>
@@ -69,7 +69,7 @@ const PageContainer = styled.div`
   align-items: center;
   height: 100%;
   width: 100%;
-  background-image: url(${(props) => props.image});
+  background-image: url(${BackgroundImage});
   background-size: cover;
   height: 100vh;
   max-width: 400px;
@@ -91,5 +91,14 @@ const PlayButton = styled.button`
   height: 4rem;
   width: 4rem;
   background-color: transparent;
-  border-color: #fff;
+  border: 0.5px solid #fff;
+  transition: all 0.1s ease-in-out 0s;
+  text-align: center;
+  &:active {
+    background-color: #fff;
+  }
+`;
+
+const Countdown = styled.p`
+  color: #fff;
 `;
