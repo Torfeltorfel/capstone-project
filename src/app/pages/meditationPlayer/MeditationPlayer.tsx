@@ -47,7 +47,7 @@ export default function MeditationPlayer({
   useEffect(() => {
     const timerID = setInterval(() => countdown(), 1000);
     return () => clearInterval(timerID);
-  });
+  }, [[h, m, s]]);
 
   return (
     <>
