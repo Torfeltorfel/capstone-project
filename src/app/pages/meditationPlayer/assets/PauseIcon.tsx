@@ -9,7 +9,12 @@ export default function PauseIcon(): JSX.Element {
       fillRule="evenodd"
       clipRule="evenodd"
     >
-      <path d="M10 24h-6v-24h6v24zm10 0h-6v-24h6v24zm-11-23h-4v22h4v-22zm10 0h-4v22h4v-22z" />
+      <path
+        fill="#FFFFFF"
+        stroke="#FFFFFF"
+        strokeWidth="0.5"
+        d="M10 24h-6v-24h6v24zm10 0h-6v-24h6v24zm-11-23h-4v22h4v-22zm10 0h-4v22h4v-22z"
+      />
     </svg>
   );
 }
