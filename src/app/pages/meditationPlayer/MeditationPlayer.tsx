@@ -6,6 +6,10 @@ import gongSound from './assets/gong-sound.wav';
 import PlayIcon from './assets/PlayIcon';
 import PauseIcon from './assets/PauseIcon';
 import BackgroundImage from './assets/bg.jpeg';
+import type { Howl as HowlType } from 'howler';
+declare global {
+  type Howl = HowlType;
+}
 
 type MeditationPlayerProps = {
   hours: number;
