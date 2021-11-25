@@ -7,9 +7,9 @@ export default {
 };
 
 export const Play = (): JSX.Element => (
-  <MeditationPlayer>Play</MeditationPlayer>
+  <MeditationPlayer hours={0} minutes={0} seconds={10} />
 );
 
 export const Pause = (): JSX.Element => (
-  <MeditationPlayer>Pause</MeditationPlayer>
+  <MeditationPlayer hours={0} minutes={0} seconds={0} />
 );
