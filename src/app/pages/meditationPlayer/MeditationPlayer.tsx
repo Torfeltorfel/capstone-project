@@ -95,14 +95,15 @@ const PlayButton = styled.button`
   height: 4rem;
   width: 4rem;
   background-color: transparent;
-  border: 0.5px solid #fff;
+  border: 0.5px solid var(--secondary-white);
   transition: all 0.1s ease-in-out 0s;
   text-align: center;
   &:active {
-    background-color: #fff;
+    background-color: var(--secondary-white);
   }
 `;
 
 const Countdown = styled.p`
-  color: #fff;
+  color: var(--secondary-white);
+  font-family: 'Open Sans';
 `;
