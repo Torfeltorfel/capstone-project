@@ -52,6 +52,10 @@ export default function MeditationPlayer({
   return (
     <>
       <PageContainer>
+        <TotalTimeHeadline>unguided meditation</TotalTimeHeadline>
+        <TotalTime>
+          {hours < 1 ? `${minutes}min` : `${hours}h : ${minutes}min`}
+        </TotalTime>
         <PlayButtonContainer>
           <PlayButton onClick={togglePlayPause}>
             {isPlaying ? <PauseIcon /> : <PlayIcon />}
@@ -77,6 +81,20 @@ const PageContainer = styled.div`
   background-size: cover;
   height: 100vh;
   max-width: 400px;
+`;
+
+const TotalTimeHeadline = styled.h3`
+  color: var(--secondary-white);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: 'Open Sans';
+`;
+
+const TotalTime = styled.p`
+  color: var(--secondary-white);
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: 'Open Sans';
 `;
 
 const PlayButtonContainer = styled.div`

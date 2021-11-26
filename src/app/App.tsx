@@ -8,7 +8,7 @@ function App(): JSX.Element {
       <Routes>
         <Route
           path="/"
-          element={<MeditationPlayer hours={0} minutes={1} seconds={2} />}
+          element={<MeditationPlayer hours={0} minutes={10} seconds={2} />}
         ></Route>
       </Routes>
     </BrowserRouter>
