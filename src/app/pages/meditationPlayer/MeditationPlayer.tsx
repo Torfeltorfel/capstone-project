@@ -26,15 +26,29 @@ export default function MeditationPlayer({
   const [isPlaying, setIsPlaying] = useState(false);
   const [over, setOver] = useState(false);
   const [[h, m, s], setTime] = useState([hours, minutes, seconds]);
+  const today = new Date();
 
   function togglePlayPause() {
     setIsPlaying(!isPlaying);
     isPlaying ? '' : playGong();
   }
 
+  function endMeditation() {
+    setOver(true),
+      playGong(),
+      localStorage.setItem(
+        '',
+        JSON.stringify({ today, eins: 'hey', zwei: 'dies' })
+      );
+  }
+
+  /*   useEffect(() => {
+    localStorage.setItem('Minutes', JSON.stringify(minutes));
+  }, [minutes]);
+ */
   const countdown = () => {
     if (!isPlaying || over) return;
-    if (h === 0 && m === 0 && s === 0) setOver(true), playGong();
+    if (h === 0 && m === 0 && s === 0) endMeditation();
     else if (m === 0 && s === 0) {
       setTime([h - 1, 59, 59]);
     } else if (s == 0) {
