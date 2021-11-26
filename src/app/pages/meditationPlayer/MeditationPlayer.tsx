@@ -7,6 +7,7 @@ import PlayIcon from './assets/PlayIcon';
 import PauseIcon from './assets/PauseIcon';
 import BackgroundImage from './assets/bg.jpeg';
 import type { Howl as HowlType } from 'howler';
+
 declare global {
   type Howl = HowlType;
 }
@@ -26,7 +27,6 @@ export default function MeditationPlayer({
   const [isPlaying, setIsPlaying] = useState(false);
   const [over, setOver] = useState(false);
   const [[h, m, s], setTime] = useState([hours, minutes, seconds]);
-  const today = new Date();
 
   function togglePlayPause() {
     setIsPlaying(!isPlaying);
@@ -34,18 +34,15 @@ export default function MeditationPlayer({
   }
 
   function endMeditation() {
+    const oldSessions = JSON.parse(localStorage.getItem('sessions') || '');
+    const today = new Date();
+    const addCurrentSession = { h: hours, m: minutes, date: today };
+    const allSessions = [...oldSessions, addCurrentSession];
     setOver(true),
       playGong(),
-      localStorage.setItem(
-        '',
-        JSON.stringify({ today, eins: 'hey', zwei: 'dies' })
-      );
+      localStorage.setItem('sessions', JSON.stringify(allSessions));
   }
 
-  /*   useEffect(() => {
-    localStorage.setItem('Minutes', JSON.stringify(minutes));
-  }, [minutes]);
- */
   const countdown = () => {
     if (!isPlaying || over) return;
     if (h === 0 && m === 0 && s === 0) endMeditation();
@@ -61,6 +58,7 @@ export default function MeditationPlayer({
   useEffect(() => {
     const timerID = setInterval(() => countdown(), 1000);
     return () => clearInterval(timerID);
+    console.log('hey');
   }, [[h, m, s]]);
 
   return (
