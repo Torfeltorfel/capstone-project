@@ -7,6 +7,7 @@ import PlayIcon from './assets/PlayIcon';
 import PauseIcon from './assets/PauseIcon';
 import BackgroundImage from './assets/bg.jpeg';
 import type { Howl as HowlType } from 'howler';
+
 declare global {
   type Howl = HowlType;
 }
@@ -32,9 +33,21 @@ export default function MeditationPlayer({
     isPlaying ? '' : playGong();
   }
 
+  function endMeditation() {
+    const oldSessions = JSON.parse(localStorage.getItem('sessions') || '');
+    const today = new Date();
+    const currentSession = { h: hours, m: minutes, date: today };
+    const allSessions = [...oldSessions, addCurrentSession];
+    setOver(true),
+      playGong(),
+      localStorage.setItem('sessions', JSON.stringify(allSessions));
+  }
+
   const countdown = () => {
     if (!isPlaying || over) return;
-    if (h === 0 && m === 0 && s === 0) setOver(true), playGong();
+    if (h === 0 && m === 0 && s === 0) {
+      endMeditation();
+    }
     else if (m === 0 && s === 0) {
       setTime([h - 1, 59, 59]);
     } else if (s == 0) {
@@ -47,11 +60,16 @@ export default function MeditationPlayer({
   useEffect(() => {
     const timerID = setInterval(() => countdown(), 1000);
     return () => clearInterval(timerID);
+    console.log('hey');
   }, [[h, m, s]]);
 
   return (
     <>
       <PageContainer>
+        <TotalTimeHeadline>unguided meditation</TotalTimeHeadline>
+        <TotalTime>
+          {hours < 1 ? `${minutes}min` : `${hours}h : ${minutes}min`}
+        </TotalTime>
         <PlayButtonContainer>
           <PlayButton onClick={togglePlayPause}>
             {isPlaying ? <PauseIcon /> : <PlayIcon />}
@@ -77,6 +95,20 @@ const PageContainer = styled.div`
   background-size: cover;
   height: 100vh;
   max-width: 400px;
+`;
+
+const TotalTimeHeadline = styled.h3`
+  color: var(--secondary-white);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: 'Open Sans';
+`;
+
+const TotalTime = styled.p`
+  color: var(--secondary-white);
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: 'Open Sans';
 `;
 
 const PlayButtonContainer = styled.div`
