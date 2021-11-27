@@ -34,10 +34,10 @@ export default function MeditationPlayer({
   }
 
   function endMeditation() {
-    const oldSessions = JSON.parse(localStorage.getItem('sessions') || '');
+    const oldSessions = JSON.parse(localStorage.getItem('sessions') || '[]');
     const today = new Date();
     const currentSession = { h: hours, m: minutes, date: today };
-    const allSessions = [...oldSessions, addCurrentSession];
+    const allSessions = [...oldSessions, currentSession];
     setOver(true),
       playGong(),
       localStorage.setItem('sessions', JSON.stringify(allSessions));
@@ -47,8 +47,7 @@ export default function MeditationPlayer({
     if (!isPlaying || over) return;
     if (h === 0 && m === 0 && s === 0) {
       endMeditation();
-    }
-    else if (m === 0 && s === 0) {
+    } else if (m === 0 && s === 0) {
       setTime([h - 1, 59, 59]);
     } else if (s == 0) {
       setTime([h, m - 1, 59]);
@@ -60,7 +59,6 @@ export default function MeditationPlayer({
   useEffect(() => {
     const timerID = setInterval(() => countdown(), 1000);
     return () => clearInterval(timerID);
-    console.log('hey');
   }, [[h, m, s]]);
 
   return (
