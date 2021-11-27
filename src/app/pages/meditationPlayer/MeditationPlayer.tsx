@@ -45,7 +45,9 @@ export default function MeditationPlayer({
 
   const countdown = () => {
     if (!isPlaying || over) return;
-    if (h === 0 && m === 0 && s === 0) endMeditation();
+    if (h === 0 && m === 0 && s === 0) {
+      endMeditation();
+    }
     else if (m === 0 && s === 0) {
       setTime([h - 1, 59, 59]);
     } else if (s == 0) {
