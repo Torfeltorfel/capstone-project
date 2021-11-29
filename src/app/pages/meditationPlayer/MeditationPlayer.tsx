@@ -7,6 +7,7 @@ import PlayIcon from './assets/PlayIcon';
 import PauseIcon from './assets/PauseIcon';
 import BackgroundImage from './assets/bg.jpeg';
 import type { Howl as HowlType } from 'howler';
+import SuccessOverlay from './SuccessOverlay/SuccessPage';
 
 declare global {
   type Howl = HowlType;
@@ -76,7 +77,7 @@ export default function MeditationPlayer({
         <Countdown>{`${h.toString().padStart(2, '0')}:${m
           .toString()
           .padStart(2, '0')}:${s.toString().padStart(2, '0')}`}</Countdown>
-        <div>{over ? 'Meditation stopped' : ''}</div>
+        {over ? <SuccessOverlay /> : ''}
       </PageContainer>
     </>
   );
@@ -96,14 +97,14 @@ const PageContainer = styled.div`
 `;
 
 const TotalTimeHeadline = styled.h3`
-  color: var(--secondary-white);
+  color: var(--white);
   text-transform: uppercase;
   font-size: 12px;
   font-family: 'Open Sans';
 `;
 
 const TotalTime = styled.p`
-  color: var(--secondary-white);
+  color: var(--white);
   text-transform: uppercase;
   font-size: 10px;
   font-family: 'Open Sans';
@@ -125,15 +126,15 @@ const PlayButton = styled.button`
   height: 4rem;
   width: 4rem;
   background-color: transparent;
-  border: 0.5px solid var(--secondary-white);
+  border: 0.5px solid var(--white);
   transition: all 0.1s ease-in-out 0s;
   text-align: center;
   &:active {
-    background-color: var(--secondary-white);
+    background-color: var(--white);
   }
 `;
 
 const Countdown = styled.p`
-  color: var(--secondary-white);
+  color: var(--white);
   font-family: 'Open Sans';
 `;
