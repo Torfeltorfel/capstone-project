@@ -3,10 +3,10 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
 
   :root {
-    --primary-white: linear-gradient(rgba(158, 169, 151, 1), rgba(255, 255, 255, 0.5) 100%);
-    --secondary-green: linear-gradient(180deg, #9EA997 0%, rgba(184, 197, 172, 0.5) 100%);
+    --white-background: linear-gradient(to top,rgba(255, 255, 255, 0.5), rgba(243, 241, 239, 1));
+    --green-background: linear-gradient(to top,rgba(184, 197, 172, 1.5),rgba(158, 169, 151, 1));
     --font-primary-dark: #333438;
-    --secondary-white: #ffffff;
+    --white: #ffffff;
     --grey-300: #F6F6F4;
     --grey-500: #ECECEC;
     --grey-700: #DADADA;
