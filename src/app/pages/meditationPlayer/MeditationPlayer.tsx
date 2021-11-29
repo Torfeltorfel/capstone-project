@@ -7,6 +7,7 @@ import PlayIcon from './assets/PlayIcon';
 import PauseIcon from './assets/PauseIcon';
 import BackgroundImage from './assets/bg.jpeg';
 import type { Howl as HowlType } from 'howler';
+import SuccessOverlay from './SuccessOverlay/SuccessPage';
 
 declare global {
   type Howl = HowlType;
@@ -76,7 +77,7 @@ export default function MeditationPlayer({
         <Countdown>{`${h.toString().padStart(2, '0')}:${m
           .toString()
           .padStart(2, '0')}:${s.toString().padStart(2, '0')}`}</Countdown>
-        <div>{over ? 'Meditation stopped' : ''}</div>
+        {over ? <SuccessOverlay></SuccessOverlay> : ''}
       </PageContainer>
     </>
   );
