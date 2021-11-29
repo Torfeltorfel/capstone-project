@@ -77,7 +77,7 @@ export default function MeditationPlayer({
         <Countdown>{`${h.toString().padStart(2, '0')}:${m
           .toString()
           .padStart(2, '0')}:${s.toString().padStart(2, '0')}`}</Countdown>
-        {over ? <SuccessOverlay></SuccessOverlay> : ''}
+        {over ? <SuccessOverlay /> : ''}
       </PageContainer>
     </>
   );
