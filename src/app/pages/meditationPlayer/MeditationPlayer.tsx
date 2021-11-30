@@ -43,9 +43,9 @@ export default function MeditationPlayer({
     const currentSession = {
       h: hours,
       m: minutes,
-      day: day,
-      month: month,
       year: year,
+      month: month,
+      day: day,
     };
     const allSessions = [...oldSessions, currentSession];
     setOver(true),
