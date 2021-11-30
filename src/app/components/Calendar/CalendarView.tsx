@@ -37,9 +37,6 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
-  max-width: 400px;
-  background-color: var(--white-background);
 `;
 
 const Header = styled.h1`
