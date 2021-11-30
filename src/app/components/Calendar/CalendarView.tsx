@@ -24,15 +24,24 @@ export default function CalendarView(): JSX.Element {
 
   return (
     <Container>
-      <h1>Your Meditation sessions</h1>
-      <Calendar value={preselectedDays} />
+      <Header>Your Meditation sessions</Header>
+      <Calendar
+        value={preselectedDays}
+        colorPrimary="var(--green-background)"
+      />
     </Container>
   );
 }
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100vh;
+  max-width: 400px;
+  background-color: var(--white-background);
+`;
+
+const Header = styled.h1`
+  color: var(--font-primary-dark);
 `;
