@@ -36,8 +36,17 @@ export default function MeditationPlayer({
 
   function endMeditation() {
     const oldSessions = JSON.parse(localStorage.getItem('sessions') || '[]');
-    const today = new Date();
-    const currentSession = { h: hours, m: minutes, date: today };
+    const fullDate = new Date();
+    const day = fullDate.getDate();
+    const month = fullDate.getMonth() + 1;
+    const year = fullDate.getFullYear();
+    const currentSession = {
+      h: hours,
+      m: minutes,
+      year: year,
+      month: month,
+      day: day,
+    };
     const allSessions = [...oldSessions, currentSession];
     setOver(true),
       playGong(),

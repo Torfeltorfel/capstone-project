@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../../components/Button/Button';
 
@@ -7,7 +8,9 @@ export default function SuccessOverlay(): JSX.Element {
     <Container>
       <Modal>
         <Header>finished</Header>
-        <Button>view dashboard</Button>
+        <Link to="/dashboard">
+          <Button>view dashboard</Button>
+        </Link>
       </Modal>
     </Container>
   );
