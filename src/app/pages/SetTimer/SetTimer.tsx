@@ -4,7 +4,13 @@ import styled from 'styled-components';
 import Button from '../../components/Button/Button';
 
 export default function SetTimer(): JSX.Element {
-  const [duration, setDuration] = useState(10);
+  const lastDuration = JSON.parse(localStorage.getItem('Duration') || '[]');
+  const [duration, setDuration] = useState(lastDuration);
+
+  function saveDuration() {
+    localStorage.setItem('Duration', JSON.stringify(duration));
+    console.log(duration);
+  }
 
   return (
     <>
@@ -21,7 +27,7 @@ export default function SetTimer(): JSX.Element {
           onChange={(event) => setDuration(parseInt(event.target.value))}
         ></Range>
         <Link to="/timer">
-          <Button>Start</Button>
+          <Button saveTime={saveDuration}>Start</Button>
         </Link>
       </PageContainer>
     </>

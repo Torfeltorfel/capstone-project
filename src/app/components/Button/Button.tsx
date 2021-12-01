@@ -4,9 +4,13 @@ import styled from 'styled-components';
 
 type ButtonProps = {
   children: ReactNode;
+  saveTime?: (event: any) => void;
 };
-export default function Button({ children }: ButtonProps): JSX.Element {
-  return <StyledButton>{children}</StyledButton>;
+export default function Button({
+  children,
+  saveTime,
+}: ButtonProps): JSX.Element {
+  return <StyledButton onClick={saveTime}>{children}</StyledButton>;
 }
 
 const StyledButton = styled.button`
