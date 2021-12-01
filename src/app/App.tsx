@@ -10,7 +10,7 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/settimer" element={<SetTimer />}></Route>
         <Route
-          path="/"
+          path="/timer"
           element={<MeditationPlayer hours={0} minutes={0} seconds={1} />}
         ></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>

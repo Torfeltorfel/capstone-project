@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../Button/Button';
 
@@ -19,7 +20,9 @@ export default function SetTimer(): JSX.Element {
           value={duration}
           onChange={(event) => setDuration(parseInt(event.target.value))}
         ></Range>
-        <Button>Start</Button>
+        <Link to="/timer">
+          <Button>Start</Button>
+        </Link>
       </PageContainer>
     </>
   );
