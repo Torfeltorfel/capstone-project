@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Button from '../Button/Button';
 
 export default function SetTimer(): JSX.Element {
   const [duration, setDuration] = useState(10);
@@ -7,9 +8,10 @@ export default function SetTimer(): JSX.Element {
   return (
     <>
       <PageContainer>
-        <TimeContainer>
-          <p>{duration} Min</p>
-        </TimeContainer>
+        <Header>Set up the Timer</Header>
+        <TimeCircle>
+          <Duration>{duration} Min</Duration>
+        </TimeCircle>
         <Range
           type="range"
           min="0"
@@ -17,6 +19,7 @@ export default function SetTimer(): JSX.Element {
           value={duration}
           onChange={(event) => setDuration(parseInt(event.target.value))}
         ></Range>
+        <Button>Start</Button>
       </PageContainer>
     </>
   );
@@ -27,33 +30,43 @@ const PageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
-  background-image: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 0.5),
-    rgba(243, 241, 239, 1)
-  );
+  gap: 2rem;
+  height: 100vh;
+  width: 100vw;
+  background: var(--white);
   background-size: cover;
   max-width: 400px;
 `;
 
-const TimeContainer = styled.div`
+const Header = styled.h1`
+  color: var(--font-primary-dark);
+  text-transform: uppercase;
+  font-size: 18px;
+  font-family: 'Merriweather';
+`;
+
+const TimeCircle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 4rem solid rgba(255, 255, 255, 0.927);
+  border: 3rem solid var(--grey-300);
   background-color: transparent;
   border-radius: 50%;
   height: 20rem;
   width: 20rem;
 `;
 
+const Duration = styled.p`
+  color: var(--green-simple);
+  font-family: 'Open sans';
+  font-size: 20px;
+`;
+
 const Range = styled.input`
   -webkit-appearance: none !important;
-  width: 420px;
+  width: 60%;
   height: 2px;
-  background: rgba(158, 169, 151, 1);
+  background: var(--green-simple);
   border: none;
   outline: none;
 
@@ -62,12 +75,12 @@ const Range = styled.input`
     width: 30px;
     height: 30px;
     background: #fcfcfc;
-    border: 2px solid rgba(184, 197, 172, 1.5);
+    border: 2px solid var(--green-simple);
     border-radius: 50%;
     cursor: pointer;
   }
 
   &::-webkit-slider-thumb:hover {
-    background: rgba(184, 197, 172, 1.5);
+    background: var(--green-simple);
   }
 `;
