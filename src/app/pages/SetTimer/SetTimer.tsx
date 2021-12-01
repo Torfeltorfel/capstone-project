@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '../Button/Button';
+import Button from '../../components/Button/Button';
 
 export default function SetTimer(): JSX.Element {
   const [duration, setDuration] = useState(10);

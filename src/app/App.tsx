@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import SetTimer from './components/Slider/Slider';
+import SetTimer from './pages/SetTimer/SetTimer';
 import Dashboard from './pages/Dashboard/Dashboard';
 import MeditationPlayer from './pages/meditationPlayer/MeditationPlayer';
 
