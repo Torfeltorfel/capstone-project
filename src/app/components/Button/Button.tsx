@@ -22,6 +22,6 @@ const StyledButton = styled.button`
   border: none;
   text-transform: uppercase;
   &:active {
-    background-image: linear-gradient(to top, #b4bab0, #7c8278);
+    opacity: 70%;
   }
 `;
