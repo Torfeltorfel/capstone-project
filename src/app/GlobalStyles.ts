@@ -3,8 +3,9 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
 
   :root {
-    --white-background: linear-gradient(to top,rgba(255, 255, 255, 0.5), rgba(243, 241, 239, 1));
+    --white-background: linear-gradient(to top,rgba(243, 241, 239, 1), rgba(255, 255, 255, 0.5));
     --green-background: linear-gradient(to top,rgba(184, 197, 172, 1.5),rgba(158, 169, 151, 1));
+    --green-simple: rgba(184, 197, 172, 1.5);
     --font-primary-dark: #333438;
     --white: #ffffff;
     --grey-300: #F6F6F4;
