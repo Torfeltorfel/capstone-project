@@ -7,7 +7,7 @@ import PlayIcon from './assets/PlayIcon';
 import PauseIcon from './assets/PauseIcon';
 import BackgroundImage from './assets/bg.jpeg';
 import type { Howl as HowlType } from 'howler';
-import SuccessOverlay from './SuccessOverlay/SuccessPage';
+import SuccessOverlay from '../../components/SuccessOverlay/SuccessPage';
 
 declare global {
   type Howl = HowlType;
