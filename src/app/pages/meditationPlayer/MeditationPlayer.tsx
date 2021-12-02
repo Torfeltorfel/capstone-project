@@ -7,7 +7,7 @@ import PlayIcon from './assets/PlayIcon';
 import PauseIcon from './assets/PauseIcon';
 import BackgroundImage from './assets/bg.jpeg';
 import type { Howl as HowlType } from 'howler';
-import SuccessOverlay from './SuccessOverlay/SuccessPage';
+import SuccessOverlay from '../../components/SuccessOverlay/SuccessPage';
 
 declare global {
   type Howl = HowlType;
@@ -102,20 +102,20 @@ const PageContainer = styled.div`
   background-image: url(${BackgroundImage});
   background-size: cover;
   height: 100vh;
-  max-width: 400px;
+  max-width: 25rem;
 `;
 
 const TotalTimeHeadline = styled.h3`
   color: var(--white);
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-family: 'Open Sans';
 `;
 
 const TotalTime = styled.p`
   color: var(--white);
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 0.625rem;
   font-family: 'Open Sans';
 `;
 
@@ -123,7 +123,7 @@ const PlayButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 4rem solid rgba(255, 255, 255, 0.15);
+  border: 4rem solid var(--grey-100);
   background-color: transparent;
   border-radius: 50%;
   height: 20rem;
@@ -135,7 +135,7 @@ const PlayButton = styled.button`
   height: 4rem;
   width: 4rem;
   background-color: transparent;
-  border: 0.5px solid var(--white);
+  border: 0.031rem solid var(--white);
   transition: all 0.1s ease-in-out 0s;
   text-align: center;
   &:active {

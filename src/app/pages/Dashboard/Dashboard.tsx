@@ -8,7 +8,7 @@ export default function Dashboard(): JSX.Element {
   return (
     <Container>
       <CalendarView />
-      <Link to="/">
+      <Link to="/settimer">
         <Button>Start Meditation</Button>
       </Link>
     </Container>
