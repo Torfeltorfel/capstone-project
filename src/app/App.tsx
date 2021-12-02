@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SetTimer from './pages/SetTimer/SetTimer';
 import Dashboard from './pages/Dashboard/Dashboard';
 import MeditationPlayer from './pages/meditationPlayer/MeditationPlayer';
+import Home from './pages/Home/Home';
 
 function App(): JSX.Element {
   const lastDuration = JSON.parse(localStorage.getItem('Duration') || '[]');
@@ -10,6 +11,7 @@ function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/settimer" element={<SetTimer />}></Route>
         <Route
           path="/timer"
