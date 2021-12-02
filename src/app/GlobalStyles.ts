@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
     --white-background: linear-gradient(to top,rgba(243, 241, 239, 1), rgba(255, 255, 255, 0.5));
     --green-background: linear-gradient(to top,rgba(184, 197, 172, 1.5),rgba(158, 169, 151, 1));
     --green-simple: rgba(184, 197, 172, 1.5);
+    --green-700: rgba(72,93,91,1)
     --font-primary-dark: #333438;
     --white: #ffffff;
     --grey-100: rgba(255, 255, 255, 0.15);
