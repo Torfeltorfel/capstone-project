@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 type ButtonProps = {
   children: ReactNode;
-  saveTime?: (event: any) => void;
+  saveTime?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 export default function Button({
   children,
@@ -21,7 +21,7 @@ const StyledButton = styled.button`
     rgba(158, 169, 151, 1)
   );
   color: #fff;
-  box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.2);
+  box-shadow: var(--box-shadow);
   padding: 0.8em 2em;
   border: none;
   text-transform: uppercase;

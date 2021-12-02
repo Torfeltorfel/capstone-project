@@ -8,9 +8,11 @@ const GlobalStyles = createGlobalStyle`
     --green-simple: rgba(184, 197, 172, 1.5);
     --font-primary-dark: #333438;
     --white: #ffffff;
-    --grey-300: #F6F6F4;
-    --grey-500: #ECECEC;
-    --grey-700: #DADADA;
+    --grey-100: rgba(255, 255, 255, 0.15);
+    --grey-300: rgba(246, 246, 244, 1);
+    --grey-500: rgba(236, 236, 236, 1);
+    --grey-700: rgba(218, 218, 218, 1);
+    --box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.2);
   }
 
   *,*::before,*::after{

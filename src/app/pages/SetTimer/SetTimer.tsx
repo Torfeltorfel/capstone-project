@@ -9,7 +9,6 @@ export default function SetTimer(): JSX.Element {
 
   function saveDuration() {
     localStorage.setItem('Duration', JSON.stringify(duration));
-    console.log(duration);
   }
 
   return (
@@ -44,13 +43,13 @@ const PageContainer = styled.div`
   width: 100vw;
   background: var(--white);
   background-size: cover;
-  max-width: 400px;
+  max-width: 25rem;
 `;
 
 const Header = styled.h1`
   color: var(--font-primary-dark);
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: 'Merriweather';
 `;
 
@@ -68,23 +67,23 @@ const TimeCircle = styled.div`
 const Duration = styled.p`
   color: var(--green-simple);
   font-family: 'Open sans';
-  font-size: 20px;
+  font-size: 1.25rem;
 `;
 
 const Range = styled.input`
   -webkit-appearance: none !important;
   width: 60%;
-  height: 2px;
+  height: 0.125rem;
   background: var(--green-simple);
   border: none;
   outline: none;
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none !important;
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
     background: #fcfcfc;
-    border: 2px solid var(--green-simple);
+    border: 0.031rem solid var(--green-simple);
     border-radius: 50%;
     cursor: pointer;
   }
