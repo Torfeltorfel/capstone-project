@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import BackButton from '../../components/Buttons/BackButton/BackButton';
@@ -6,6 +6,13 @@ import Button from '../../components/Buttons/CTAgreen/CTAgreen';
 import Navigation from '../../components/Navigation/Navigation';
 
 export default function Challenge(): JSX.Element {
+  const [challenge, setChallenge] = useState(false);
+
+  function activateChallenge() {
+    setChallenge(!challenge);
+    console.log(challenge);
+  }
+
   return (
     <Container>
       <ContentContainer>
@@ -17,7 +24,11 @@ export default function Challenge(): JSX.Element {
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi
           velit temporibus animi beatae aperiam adipisci placeat.
         </Description>
-        <Button>Start Challenge</Button>
+        <Link to="/timer">
+          <Button onClick={activateChallenge}>
+            {challenge ? 'Start Challenge' : ' Go to Challenge'}
+          </Button>
+        </Link>
       </ContentContainer>
 
       <Navigation activeLink="challenge" />
