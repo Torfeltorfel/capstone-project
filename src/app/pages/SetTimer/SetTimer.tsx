@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '../../components/Button/Button';
+import BackButton from '../../components/Buttons/BackButton/BackButton';
+import CTAgreen from '../../components/Buttons/CTAgreen/CTAgreen';
 
 export default function SetTimer(): JSX.Element {
   const lastDuration = JSON.parse(localStorage.getItem('Duration') || '[]');
@@ -14,6 +15,9 @@ export default function SetTimer(): JSX.Element {
   return (
     <>
       <PageContainer>
+        <StyledLink to="/home">
+          <BackButton />
+        </StyledLink>
         <Header>Set up the Timer</Header>
         <TimeCircle>
           <Duration>{duration} Min</Duration>
@@ -26,7 +30,7 @@ export default function SetTimer(): JSX.Element {
           onChange={(event) => setDuration(parseInt(event.target.value))}
         ></Range>
         <Link to="/timer">
-          <Button saveTime={saveDuration}>Start</Button>
+          <CTAgreen saveTime={saveDuration}>Start</CTAgreen>
         </Link>
       </PageContainer>
     </>
@@ -44,6 +48,11 @@ const PageContainer = styled.div`
   background: var(--white);
   background-size: cover;
   max-width: 25rem;
+`;
+
+const StyledLink = styled(Link)`
+  align-self: flex-start;
+  margin-left: 2rem;
 `;
 
 const Header = styled.h1`

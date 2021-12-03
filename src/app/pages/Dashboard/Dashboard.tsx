@@ -1,16 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '../../components/Button/Button';
 import CalendarView from '../../components/Calendar/CalendarView';
+import Navigation from '../../components/Navigation/Navigation';
 
 export default function Dashboard(): JSX.Element {
   return (
     <Container>
-      <CalendarView />
-      <Link to="/settimer">
-        <Button>Start Meditation</Button>
-      </Link>
+      {<CalendarView />}
+      <Navigation activeLink="dashboard" />
     </Container>
   );
 }
@@ -21,6 +18,5 @@ const Container = styled.div`
   flex-direction: column;
   height: 100vh;
   max-width: 400px;
-  gap: 4rem;
   background-color: var(--white-background);
 `;

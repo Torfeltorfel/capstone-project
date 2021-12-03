@@ -1,9 +1,9 @@
 import React from 'react';
-import Slider from './SetTimer';
+import SetTimer from './SetTimer';
 
 export default {
-  title: 'Component/Slider',
-  component: Slider,
+  title: 'Page/SetTimer',
+  component: SetTimer,
 };
 
-export const standard = (): JSX.Element => <Slider />;
+export const standard = (): JSX.Element => <SetTimer />;
