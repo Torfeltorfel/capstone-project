@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '../Button/Button';
+import Button from '../Buttons/CTAgreen/CTAgreen';
 
 export default function SuccessOverlay(): JSX.Element {
   return (
