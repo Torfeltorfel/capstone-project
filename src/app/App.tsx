@@ -11,15 +11,15 @@ function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/settimer" element={<SetTimer />}></Route>
+        <Route path={'/home'} element={<Home />} />
+        <Route path={'/settimer'} element={<SetTimer />} />
         <Route
-          path="/timer"
+          path={'/timer'}
           element={
-            <MeditationPlayer hours={0} minutes={lastDuration} seconds={1} />
+            <MeditationPlayer hours={0} minutes={lastDuration} seconds={0} />
           }
-        ></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
+        />
+        <Route path={'/dashboard'} element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );

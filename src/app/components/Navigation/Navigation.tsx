@@ -8,24 +8,25 @@ import SittingIcon from './assets/SittingIcon';
 export default function Navigation(): JSX.Element {
   return (
     <Container>
-      <Link to="/">
+      <Link to={'/home'}>
         <HomeIconThin />
       </Link>
-      <Link to="/settimer">
+      <Link to={'/settimer'}>
         <SittingIcon />
       </Link>
-      <Link to="dashboard">
+      <Link to={'/dashboard'}>
         <AnalyticsIconThin />
       </Link>
     </Container>
   );
 }
 
-const Container = styled.div`
+const Container = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 6rem;
+  height: 5rem;
+  max-height: 5rem;
   width: 100vw;
   max-width: 25rem;
   background-color: var(--white);
