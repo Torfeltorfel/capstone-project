@@ -9,7 +9,7 @@ export default function Home(): JSX.Element {
       <ContentContainer>
         <Header>Welcome back</Header>
       </ContentContainer>
-      <Navigation />
+      <Navigation activeLink="home" />
     </PageContainer>
   );
 }

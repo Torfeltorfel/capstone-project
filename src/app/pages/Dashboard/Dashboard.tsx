@@ -7,7 +7,7 @@ export default function Dashboard(): JSX.Element {
   return (
     <Container>
       {<CalendarView />}
-      <Navigation />
+      <Navigation activeLink="dashboard" />
     </Container>
   );
 }

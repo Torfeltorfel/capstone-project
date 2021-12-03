@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function SittingIcon(): JSX.Element {
+export default function SittingIcon(
+  props: React.SVGProps<SVGPathElement>
+): JSX.Element {
   return (
     <svg
       version="1.1"
@@ -8,14 +10,13 @@ export default function SittingIcon(): JSX.Element {
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
-      width="38px"
-      height="38px"
+      width="34"
+      height="34"
       viewBox="0 0 38 38"
       enableBackground="new 0 0 38 38"
     >
       <path
         fill="none"
-        stroke="rgba(72,93,91,1)"
         strokeWidth="1"
         strokeMiterlimit="10"
         d="M23,8c0,2.209-1.791,4-4,4s-4-1.791-4-4
@@ -24,6 +25,7 @@ export default function SittingIcon(): JSX.Element {
 	c4-1.081,7.806-2.328,7.806-2.328 M19,34.714C23,35.794,27.517,37,29.517,37S33,35.667,33,33.604c0-2.592-1.925-3.666-3.516-4.496
 	c-1.591-0.828-5.482-2.608-5.482-2.608L23,20 M0.503,31.318c0,0,4.435-3.147,6.435-6.366S10.856,17.396,12,16s5-2.552,5-2.552
 	v-1.986 M21,11.462v1.986c0,0,3.855,1.156,5,2.552c1.144,1.396,3.062,5.733,5.062,8.952s6.435,6.366,6.435,6.366"
+        {...props}
       />
     </svg>
   );

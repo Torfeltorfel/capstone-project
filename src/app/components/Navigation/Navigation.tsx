@@ -1,21 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import AnalyticsIconThin from './assets/AnalyticsIconThin';
-import HomeIconThin from './assets/HomeIcon';
+import AnalyticsIcon from './assets/AnalyticsIcon';
+import HomeIcon from './assets/HomeIcon';
 import SittingIcon from './assets/SittingIcon';
 
-export default function Navigation(): JSX.Element {
+type NavigationProps = {
+  activeLink?: 'home' | 'dashboard';
+};
+
+export default function Navigation({
+  activeLink,
+}: NavigationProps): JSX.Element {
   return (
     <Container>
       <Link to={'/home'}>
-        <HomeIconThin />
+        <HomeIcon
+          stroke={
+            activeLink === 'home' ? 'var(--green-simple)' : 'var(--grey-700)'
+          }
+        />
       </Link>
       <Link to={'/settimer'}>
-        <SittingIcon />
+        <SittingIcon stroke={'var(--grey-700)'} />
       </Link>
       <Link to={'/dashboard'}>
-        <AnalyticsIconThin />
+        <AnalyticsIcon
+          stroke={
+            activeLink === 'dashboard'
+              ? 'var(--green-simple)'
+              : 'var(--grey-700)'
+          }
+        />
       </Link>
     </Container>
   );
