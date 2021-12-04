@@ -5,7 +5,7 @@ import styled from 'styled-components';
 type ButtonProps = {
   children: ReactNode;
   saveTime?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onClick: () => void;
+  onClick?: () => void;
 };
 export default function Button({
   children,

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import BackButton from '../../components/Buttons/BackButton/BackButton';
-import CTAgreen from '../../components/Buttons/CTAgreen/CTAgreen';
+import Button from '../../components/Buttons/Button/Button';
 
 export default function SetTimer(): JSX.Element {
   const lastDuration = JSON.parse(localStorage.getItem('Duration') || '[]');
@@ -30,7 +30,7 @@ export default function SetTimer(): JSX.Element {
           onChange={(event) => setDuration(parseInt(event.target.value))}
         ></Range>
         <Link to="/timer">
-          <CTAgreen saveTime={saveDuration}>Start</CTAgreen>
+          <Button saveTime={saveDuration}>Start</Button>
         </Link>
       </PageContainer>
     </>
