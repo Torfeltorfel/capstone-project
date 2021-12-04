@@ -30,7 +30,9 @@ export default function SetTimer(): JSX.Element {
           onChange={(event) => setDuration(parseInt(event.target.value))}
         ></Range>
         <Link to="/timer">
-          <Button saveTime={saveDuration}>Start</Button>
+          <Button onClick={saveDuration} theme="primaryRed">
+            Start
+          </Button>
         </Link>
       </PageContainer>
     </>
