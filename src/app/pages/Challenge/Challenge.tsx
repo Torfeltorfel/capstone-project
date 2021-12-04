@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import BackButton from '../../components/Buttons/BackButton/BackButton';
-import Button from '../../components/Buttons/CTAgreen/CTAgreen';
+import Button from '../../components/Buttons/Button/Button';
 import Navigation from '../../components/Navigation/Navigation';
 
 export default function Challenge(): JSX.Element {
   const [challenge, setChallenge] = useState(false);
 
-  function activateChallenge() {
+  function toggleChallenge() {
     setChallenge(!challenge);
     console.log(challenge);
   }
@@ -25,7 +25,7 @@ export default function Challenge(): JSX.Element {
           velit temporibus animi beatae aperiam adipisci placeat.
         </Description>
         <Link to="/timer">
-          <Button onClick={activateChallenge}>
+          <Button onClick={toggleChallenge}>
             {challenge ? 'Start Challenge' : ' Go to Challenge'}
           </Button>
         </Link>
