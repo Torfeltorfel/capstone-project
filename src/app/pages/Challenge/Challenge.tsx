@@ -26,9 +26,11 @@ export default function Challenge(): JSX.Element {
         </Description>
       </ContentContainer>
       <TileContainer>
-        <Tile>2 min for 15 days</Tile>
-        <Tile>30 min after 30 days</Tile>
-        <Tile>30 min after 30 days</Tile>
+        <Tile background-image="house">2 min for 15 days</Tile>
+        <Tile background-image="grass">30 min after 30 days</Tile>
+        <Tile background-image="mountain">30 min after 30 days</Tile>
+        <Tile background-image="waterfall">30 min after 30 days</Tile>
+        <Tile background-image="weeds">30 min after 30 days</Tile>
       </TileContainer>
 
       <Navigation activeLink="challenge" />
@@ -39,7 +41,7 @@ export default function Challenge(): JSX.Element {
 const Container = styled.div`
   height: 100vh;
   max-width: 100vw;
-  padding: 2rem;
+  padding: 1rem;
   overflow-x: hidden;
   background-image: var(--white-background);
 `;
@@ -47,8 +49,8 @@ const Container = styled.div`
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  margin-bottom: 2rem;
 `;
 
 const StyledLink = styled(Link)`
@@ -58,9 +60,13 @@ const StyledLink = styled(Link)`
 const TileContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
 `;
 
-const Header = styled.h1``;
+const Header = styled.h1`
+  margin: 0.5rem 1rem;
+`;
 
-const Description = styled.p``;
+const Description = styled.p`
+  margin: 0.2rem 0.5rem;
+`;
