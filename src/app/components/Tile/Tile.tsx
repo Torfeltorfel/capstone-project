@@ -5,7 +5,7 @@ import grass from './assets/grass.jpeg';
 
 type TileProps = {
   children: ReactNode;
-  backgroundImage: string;
+  backgroundImage?: string;
 };
 
 export default function Tile({ children }: TileProps): JSX.Element {
@@ -23,12 +23,12 @@ const Container = styled.div`
   box-shadow: var(--box-shadow);
   background-image: url(${grass});
   background-size: cover;
-  height: 10rem;
-  width: 7rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
+  flex: 1;
+  min-height: 10rem;
 `;
 
 const TextContainer = styled.div`

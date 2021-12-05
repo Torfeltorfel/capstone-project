@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import BackButton from '../../components/Buttons/BackButton/BackButton';
-import Button from '../../components/Buttons/Button/Button';
 import Navigation from '../../components/Navigation/Navigation';
+import Tile from '../../components/Tile/Tile';
 
 export default function Challenge(): JSX.Element {
-  const [challenge, setChallenge] = useState(false);
+  /*   const [challenge, setChallenge] = useState(false); */
 
-  function toggleChallenge() {
+  /*   function toggleChallenge() {
     setChallenge(!challenge);
     console.log(challenge);
-  }
+  } */
 
   return (
     <Container>
@@ -19,17 +19,17 @@ export default function Challenge(): JSX.Element {
         <StyledLink to="/home">
           <BackButton></BackButton>
         </StyledLink>
-        <Header>Your 30 days Challenge</Header>
+        <Header>Start your Challenge</Header>
         <Description>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi
           velit temporibus animi beatae aperiam adipisci placeat.
         </Description>
-        <Link to="/timer">
-          <Button onClick={toggleChallenge}>
-            {challenge ? 'Start Challenge' : ' Go to Challenge'}
-          </Button>
-        </Link>
       </ContentContainer>
+      <TileContainer>
+        <Tile>2 min for 15 days</Tile>
+        <Tile>30 min after 30 days</Tile>
+        <Tile>30 min after 30 days</Tile>
+      </TileContainer>
 
       <Navigation activeLink="challenge" />
     </Container>
@@ -38,9 +38,10 @@ export default function Challenge(): JSX.Element {
 
 const Container = styled.div`
   height: 100vh;
-  width: 100vw;
-  display: grid;
-  grid-template-rows: auto 5rem;
+  max-width: 100vw;
+  padding: 2rem;
+  overflow-x: hidden;
+  background-image: var(--white-background);
 `;
 
 const ContentContainer = styled.div`
@@ -48,11 +49,16 @@ const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 2rem;
 `;
 
 const StyledLink = styled(Link)`
   align-self: flex-start;
+`;
+
+const TileContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
 `;
 
 const Header = styled.h1``;
