@@ -26,11 +26,21 @@ export default function Challenge(): JSX.Element {
         </Description>
       </ContentContainer>
       <TileContainer>
-        <Tile background-image="house">2 min for 15 days</Tile>
-        <Tile background-image="grass">30 min after 30 days</Tile>
-        <Tile background-image="mountain">30 min after 30 days</Tile>
-        <Tile background-image="waterfall">30 min after 30 days</Tile>
-        <Tile background-image="weeds">30 min after 30 days</Tile>
+        <Tile backgroundImageURL="src/app/components/Tile/assets/grass.jpeg">
+          2 min for 15 days
+        </Tile>
+        <Tile backgroundImageURL="src/app/components/Tile/assets/house.jpeg">
+          30 min after 30 days
+        </Tile>
+        <Tile backgroundImageURL="src/app/components/Tile/assets/mountains.jpeg">
+          15 min after 30 days
+        </Tile>
+        <Tile backgroundImageURL="src/app/components/Tile/assets/waterfall.jpeg">
+          30 min after 30 days
+        </Tile>
+        <Tile backgroundImageURL="src/app/components/Tile/assets/weeds.jpeg">
+          30 min after 30 days
+        </Tile>
       </TileContainer>
 
       <Navigation activeLink="challenge" />

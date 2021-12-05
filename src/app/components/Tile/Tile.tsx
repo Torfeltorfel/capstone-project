@@ -1,16 +1,18 @@
 import type { ReactNode } from 'react';
 import React from 'react';
 import styled from 'styled-components';
-import grass from './assets/grass.jpeg';
 
 type TileProps = {
   children: ReactNode;
-  backgroundImage?: string;
+  backgroundImageURL: string;
 };
 
-export default function Tile({ children }: TileProps): JSX.Element {
+export default function Tile({
+  children,
+  backgroundImageURL,
+}: TileProps): JSX.Element {
   return (
-    <Container>
+    <Container backgroundImageURL={backgroundImageURL}>
       <TextContainer>
         <Headline>{children}</Headline>
       </TextContainer>
@@ -18,10 +20,10 @@ export default function Tile({ children }: TileProps): JSX.Element {
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<TileProps>`
   border-radius: 0.75rem;
   box-shadow: var(--box-shadow);
-  background-image: url(${grass});
+  background-image: ${(props) => `url(${props.backgroundImageURL})`};
   background-size: cover;
   display: flex;
   flex-direction: column;
