@@ -5,15 +5,11 @@ import styled from 'styled-components';
 type ButtonProps = {
   children: ReactNode;
   onClick?: () => void;
-  color?: string;
-  inOutLine?: string;
 };
 
 export default function Button({
   children,
   onClick,
-  color,
-  inOutLine,
 }: ButtonProps): JSX.Element {
   return <StyledButton onClick={onClick}>{children}</StyledButton>;
 }
