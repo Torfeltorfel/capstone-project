@@ -16,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
     --grey-700: rgba(218, 218, 218, 1);
     --box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.2);
     --h1-size: 1.5rem;
+    --p-size: 0.8rem;
   }
 
   *,*::before,*::after{
