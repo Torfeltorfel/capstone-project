@@ -29,6 +29,8 @@ export default function MeditationPlayer({
   const [playGong] = useSound(gongSound);
   const [isPlaying, setIsPlaying] = useState(false);
   const [over, setOver] = useState(false);
+
+  /*  Maybe put the localStorage getItem directly in the useState??!! */
   const [[h, m, s], setTime] = useState([hours, minutes, seconds]);
 
   function togglePlayPause() {

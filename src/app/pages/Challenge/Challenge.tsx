@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import styled from 'styled-components';
 import Navigation from '../../components/Navigation/Navigation';
 import Tile from '../../components/Tile/Tile';
 
 export default function Challenge(): JSX.Element {
-  /*   const [challenge, setChallenge] = useState(false); */
-
-  /*   function toggleChallenge() {
-    setChallenge(!challenge);
-    console.log(challenge);
-  } */
-
   return (
     <>
       <Container>
@@ -24,21 +16,26 @@ export default function Challenge(): JSX.Element {
           </TextContainer>
 
           <TileContainer>
-            <Tile backgroundImageURL="src/app/components/Tile/assets/grass.jpeg">
-              2 min for 15 days
-            </Tile>
-            <Tile backgroundImageURL="src/app/components/Tile/assets/house.jpeg">
-              30 min after 30 days
-            </Tile>
-            <Tile backgroundImageURL="src/app/components/Tile/assets/mountains.jpeg">
-              15 min after 30 days
-            </Tile>
-            <Tile backgroundImageURL="src/app/components/Tile/assets/waterfall.jpeg">
-              30 min after 30 days
-            </Tile>
-            <Tile backgroundImageURL="src/app/components/Tile/assets/weeds.jpeg">
-              30 min after 30 days
-            </Tile>
+            <Tile
+              backgroundImageURL="src/app/components/Tile/assets/grass.jpeg"
+              sessionDuration={2}
+            ></Tile>
+            <Tile
+              backgroundImageURL="src/app/components/Tile/assets/house.jpeg"
+              sessionDuration={10}
+            ></Tile>
+            <Tile
+              backgroundImageURL="src/app/components/Tile/assets/mountains.jpeg"
+              sessionDuration={8}
+            ></Tile>
+            <Tile
+              backgroundImageURL="src/app/components/Tile/assets/waterfall.jpeg"
+              sessionDuration={5}
+            ></Tile>
+            <Tile
+              backgroundImageURL="src/app/components/Tile/assets/weeds.jpeg"
+              sessionDuration={15}
+            ></Tile>
           </TileContainer>
         </ContentContainer>
         <Navigation activeLink="challenge" />
@@ -61,11 +58,6 @@ const ContentContainer = styled.div`
   align-items: center;
   padding: 1rem;
   overflow-y: scroll;
-`;
-
-const StyledLink = styled(Link)`
-  align-self: flex-start;
-  margin-left: 0.5rem;
 `;
 
 const TextContainer = styled.div`

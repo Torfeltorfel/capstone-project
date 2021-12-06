@@ -1,22 +1,31 @@
-import type { ReactNode } from 'react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 type TileProps = {
-  children: ReactNode;
+  sessionDuration: number;
   backgroundImageURL: string;
 };
 
 export default function Tile({
-  children,
+  sessionDuration,
   backgroundImageURL,
 }: TileProps): JSX.Element {
+  function saveDuration() {
+    localStorage.setItem('Duration', JSON.stringify(sessionDuration));
+  }
+
   return (
-    <Container backgroundImageURL={backgroundImageURL}>
-      <TextContainer>
-        <Headline>{children}</Headline>
-      </TextContainer>
-    </Container>
+    <Link to="/timer" onClick={saveDuration}>
+      <Container
+        backgroundImageURL={backgroundImageURL}
+        sessionDuration={sessionDuration}
+      >
+        <TextContainer>
+          <Description>{sessionDuration} Minutes a Day for 30 Days</Description>
+        </TextContainer>
+      </Container>
+    </Link>
   );
 }
 
@@ -39,7 +48,7 @@ const TextContainer = styled.div`
   background-color: var(--black-100);
 `;
 
-const Headline = styled.h3`
+const Description = styled.p`
   margin: 0.3rem;
   font-size: 0.8rem;
   font-weight: 900;
