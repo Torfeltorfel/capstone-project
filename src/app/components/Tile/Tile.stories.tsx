@@ -6,4 +6,9 @@ export default {
   component: Tile,
 };
 
-export const Grass = (): JSX.Element => <Tile>2 Minutes</Tile>;
+export const Grass = (): JSX.Element => (
+  <Tile
+    sessionDuration={2}
+    backgroundImageURL="src/app/components/Tile/assets/grass.jpeg"
+  ></Tile>
+);
