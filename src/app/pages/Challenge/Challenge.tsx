@@ -14,45 +14,49 @@ export default function Challenge(): JSX.Element {
   } */
 
   return (
-    <Container>
-      <ContentContainer>
-        <StyledLink to="/home">
-          <BackButton></BackButton>
-        </StyledLink>
-        <Header>Start your Challenge</Header>
-        <Description>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi
-          velit temporibus animi beatae aperiam adipisci placeat.
-        </Description>
-      </ContentContainer>
-      <TileContainer>
-        <Tile backgroundImageURL="src/app/components/Tile/assets/grass.jpeg">
-          2 min for 15 days
-        </Tile>
-        <Tile backgroundImageURL="src/app/components/Tile/assets/house.jpeg">
-          30 min after 30 days
-        </Tile>
-        <Tile backgroundImageURL="src/app/components/Tile/assets/mountains.jpeg">
-          15 min after 30 days
-        </Tile>
-        <Tile backgroundImageURL="src/app/components/Tile/assets/waterfall.jpeg">
-          30 min after 30 days
-        </Tile>
-        <Tile backgroundImageURL="src/app/components/Tile/assets/weeds.jpeg">
-          30 min after 30 days
-        </Tile>
-      </TileContainer>
+    <>
+      <Container>
+        <ContentContainer>
+          <StyledLink to="/home">
+            <BackButton></BackButton>
+          </StyledLink>
+          <TextContainer>
+            <Header>Start your Challenge</Header>
+            <Description>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi
+              velit temporibus animi beatae aperiam adipisci placeat.
+            </Description>
+          </TextContainer>
 
-      <Navigation activeLink="challenge" />
-    </Container>
+          <TileContainer>
+            <Tile backgroundImageURL="src/app/components/Tile/assets/grass.jpeg">
+              2 min for 15 days
+            </Tile>
+            <Tile backgroundImageURL="src/app/components/Tile/assets/house.jpeg">
+              30 min after 30 days
+            </Tile>
+            <Tile backgroundImageURL="src/app/components/Tile/assets/mountains.jpeg">
+              15 min after 30 days
+            </Tile>
+            <Tile backgroundImageURL="src/app/components/Tile/assets/waterfall.jpeg">
+              30 min after 30 days
+            </Tile>
+            <Tile backgroundImageURL="src/app/components/Tile/assets/weeds.jpeg">
+              30 min after 30 days
+            </Tile>
+          </TileContainer>
+        </ContentContainer>
+        <Navigation activeLink="challenge" />
+      </Container>
+    </>
   );
 }
 
 const Container = styled.div`
+  display: grid;
+  grid-template-rows: auto 3.75rem;
   height: 100vh;
   max-width: 100vw;
-  padding: 1rem;
-  overflow-x: hidden;
   background-image: var(--white-background);
 `;
 
@@ -60,23 +64,31 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
+  padding: 1rem;
+  overflow-y: scroll;
 `;
 
 const StyledLink = styled(Link)`
   align-self: flex-start;
 `;
 
-const TileContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem;
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
 `;
 
 const Header = styled.h1`
-  margin: 0.5rem 1rem;
+  margin: 0.2rem 0.5rem;
 `;
 
 const Description = styled.p`
   margin: 0.2rem 0.5rem;
+`;
+
+const TileContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
 `;

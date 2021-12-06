@@ -30,19 +30,19 @@ const Container = styled.div<TileProps>`
   justify-content: flex-end;
   overflow: hidden;
   flex: 1;
-  min-height: 10rem;
+  min-height: 12rem;
 `;
 
 const TextContainer = styled.div`
   overflow: hidden;
   padding: 0.1rem 0.4rem;
-  background-color: var(--black-700);
-  opacity: 50%;
+  background-color: var(--black-100);
 `;
 
-const Headline = styled.h1`
-  color: var(--white);
-  font-size: 1rem;
+const Headline = styled.h3`
+  margin: 0.3rem;
+  font-size: 0.8rem;
   font-weight: 900;
   font-family: 'Open Sans';
+  color: var(--white);
 `;

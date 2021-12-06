@@ -52,8 +52,7 @@ const Container = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 5rem;
-  max-height: 5rem;
+  height: 3.75rem;
   width: 100vw;
   max-width: 25rem;
   background-color: var(--white);
