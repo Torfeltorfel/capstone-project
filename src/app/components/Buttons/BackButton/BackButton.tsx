@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import ArrowIcon from './assets/ArrowIcon';
+import { useNavigate } from 'react-router-dom';
 
 export default function BackButton(): JSX.Element {
+  const navigate = useNavigate();
   return (
-    <Button>
+    <Button onClick={() => navigate(-1)}>
       <ArrowIcon />
     </Button>
   );

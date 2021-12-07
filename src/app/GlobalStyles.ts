@@ -7,7 +7,8 @@ const GlobalStyles = createGlobalStyle`
     --green-background: linear-gradient(to top,rgba(184, 197, 172, 1.5),rgba(158, 169, 151, 1));
     --green-simple: rgba(184, 197, 172, 1.5);
     --green-700: rgba(72,93,91,1)
-    --font-primary-dark: #333438;
+    --black-700: #333438;
+    --black-100: #0000006b;
     --white: #ffffff;
     --grey-100: rgba(255, 255, 255, 0.15);
     --grey-300: rgba(246, 246, 244, 1);
@@ -15,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
     --grey-700: rgba(218, 218, 218, 1);
     --box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.2);
     --h1-size: 1.5rem;
+    --p-size: 0.8rem;
   }
 
   *,*::before,*::after{
@@ -29,6 +31,7 @@ const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 100vh;
+    overflow-y: auto;
   }
 `;
 export default GlobalStyles;
