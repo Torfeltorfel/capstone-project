@@ -2,6 +2,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
+import { connectDatabase } from './app/components/utils/database';
+
+if (!process.env.MONGODB_URI) {
+  throw new Error("Couldn't connect to the database");
+}
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -20,6 +25,8 @@ app.get('*', (_request, response) => {
   response.sendFile('index.html', { root: 'dist/app' });
 });
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}!`);
+connectDatabase(process.env.MONGODB_URI || '').then(() => {
+  app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}!`);
+  });
 });
