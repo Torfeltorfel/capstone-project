@@ -15,17 +15,17 @@ export default function Navigation({
 }: NavigationProps): JSX.Element {
   return (
     <Container>
-      <Link to={'/home'}>
+      <Link to="/home">
         <HomeIcon
           stroke={
             activeLink === 'home' ? 'var(--green-simple)' : 'var(--grey-700)'
           }
         />
       </Link>
-      <Link to={'/settimer'}>
+      <Link to="/settimer">
         <SittingIcon stroke={'var(--grey-700)'} />
       </Link>
-      <Link to={'/challenge'}>
+      <Link to="/challenge">
         <ChallengeIcon
           stroke={
             activeLink === 'challenge'
@@ -35,7 +35,7 @@ export default function Navigation({
         />
       </Link>
 
-      <Link to={'/dashboard'}>
+      <Link to="/dashboard">
         <AnalyticsIcon
           stroke={
             activeLink === 'dashboard'

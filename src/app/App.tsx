@@ -13,15 +13,15 @@ function App(): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path={'/settimer'} element={<SetTimer />} />
+        <Route path="/settimer" element={<SetTimer />} />
         <Route
-          path={'/timer'}
+          path="/timer"
           element={
             <MeditationPlayer hours={0} minutes={lastDuration} seconds={0} />
           }
         />
         <Route path="/challenge" element={<Challenge />}></Route>
-        <Route path={'/dashboard'} element={<Dashboard />} />
+        <Route path="/dashboard " element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
