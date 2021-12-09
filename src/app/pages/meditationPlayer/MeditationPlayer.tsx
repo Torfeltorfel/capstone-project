@@ -39,7 +39,7 @@ export default function MeditationPlayer({
   }
 
   function endMeditation() {
-    const oldSessions = JSON.parse(localStorage.getItem('sessions') || '[]');
+    /* const oldSessions = JSON.parse(localStorage.getItem('sessions') || '[]'); */
     const fullDate = new Date();
     const day = fullDate.getDate();
     const month = fullDate.getMonth() + 1;
@@ -51,10 +51,27 @@ export default function MeditationPlayer({
       month: month,
       day: day,
     };
-    const allSessions = [...oldSessions, currentSession];
+    /* const allSessions = [...oldSessions, currentSession]; */
     setOver(true),
       playGong(),
-      localStorage.setItem('sessions', JSON.stringify(allSessions));
+      /* localStorage.setItem('sessions', JSON.stringify(allSessions)); */
+      saveSessionInDB(currentSession);
+    console.log(currentSession);
+  }
+
+  async function saveSessionInDB(session: any) {
+    const response = await fetch('/api/sessions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ session }),
+    });
+    if (response.status === 200) {
+      console.log('Done!');
+    } else {
+      console.log('Error - data not uploaded!');
+    }
   }
 
   const countdown = () => {
