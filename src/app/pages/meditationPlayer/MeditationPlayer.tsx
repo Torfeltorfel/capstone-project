@@ -56,7 +56,6 @@ export default function MeditationPlayer({
       playGong(),
       /* localStorage.setItem('sessions', JSON.stringify(allSessions)); */
       saveSessionInDB(currentSession);
-    console.log(currentSession);
   }
 
   async function saveSessionInDB(session: any) {
