@@ -30,8 +30,6 @@ export default function MeditationPlayer({
   const [playGong] = useSound(gongSound);
   const [isPlaying, setIsPlaying] = useState(false);
   const [over, setOver] = useState(false);
-
-  /*  Maybe put the localStorage getItem directly in the useState??!! */
   const [[h, m, s], setTime] = useState([hours, minutes, seconds]);
 
   function togglePlayPause() {
@@ -40,7 +38,6 @@ export default function MeditationPlayer({
   }
 
   function endMeditation() {
-    /* const oldSessions = JSON.parse(localStorage.getItem('sessions') || '[]'); */
     const fullDate = new Date();
     const day = fullDate.getDate();
     const month = fullDate.getMonth() + 1;
@@ -52,11 +49,7 @@ export default function MeditationPlayer({
       month: month,
       day: day,
     };
-    /* const allSessions = [...oldSessions, currentSession]; */
-    setOver(true),
-      playGong(),
-      /* localStorage.setItem('sessions', JSON.stringify(allSessions)); */
-      saveInDB(currentSession, '/api/sessions');
+    setOver(true), playGong(), saveInDB(currentSession, '/api/sessions');
   }
 
   const countdown = () => {
