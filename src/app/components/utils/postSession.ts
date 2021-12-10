@@ -1,4 +1,4 @@
-export default async function saveInDB(
+export default async function postSession(
   session: unknown,
   url: string
 ): Promise<void> {

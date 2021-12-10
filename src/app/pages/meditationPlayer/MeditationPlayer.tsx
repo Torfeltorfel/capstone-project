@@ -10,7 +10,7 @@ import type { Howl as HowlType } from 'howler';
 import SuccessOverlay from '../../components/SuccessOverlay/SuccessPage';
 import { Link } from 'react-router-dom';
 import BackButton from '../../components/Buttons/BackButton/BackButton';
-import saveInDB from '../../components/utils/saveInDb';
+import postSession from '../../components/utils/postSession';
 
 declare global {
   type Howl = HowlType;
@@ -39,7 +39,7 @@ export default function MeditationPlayer(): JSX.Element {
       month: month,
       day: day,
     };
-    setOver(true), playGong(), saveInDB(currentSession, '/api/sessions');
+    setOver(true), playGong(), postSession(currentSession, '/api/sessions');
   }
 
   const countdown = () => {

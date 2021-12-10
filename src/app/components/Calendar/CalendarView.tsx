@@ -15,13 +15,7 @@ export default function CalendarView(): JSX.Element {
   /* const sessionsLocal = JSON.parse(localStorage.getItem('sessions') || '[]'); */
   const sessions = useFetch<Session[]>('api/sessions') || [];
   const sessionArray = sessions.map((session) => {
-    return session.session; /* { 
-      h: session.session.h,
-      m: session.session.m,
-      year: session.session.year,
-      month: session.session.month,
-      day: session.session.day,
-    }; */
+    return session.session;
   });
 
   return (
