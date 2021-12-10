@@ -10,6 +10,7 @@ import type { Howl as HowlType } from 'howler';
 import SuccessOverlay from '../../components/SuccessOverlay/SuccessPage';
 import { Link } from 'react-router-dom';
 import BackButton from '../../components/Buttons/BackButton/BackButton';
+import saveInDB from '../../components/utils/saveInDb';
 
 declare global {
   type Howl = HowlType;
@@ -55,22 +56,7 @@ export default function MeditationPlayer({
     setOver(true),
       playGong(),
       /* localStorage.setItem('sessions', JSON.stringify(allSessions)); */
-      saveSessionInDB(currentSession);
-  }
-
-  async function saveSessionInDB(session: any) {
-    const response = await fetch('/api/sessions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ session }),
-    });
-    if (response.status === 200) {
-      console.log('Done!');
-    } else {
-      console.log('Error - data not uploaded!');
-    }
+      saveInDB(currentSession, '/api/sessions');
   }
 
   const countdown = () => {
