@@ -7,21 +7,14 @@ import Home from './pages/Home/Home';
 import Challenge from './pages/Challenge/Challenge';
 
 function App(): JSX.Element {
-  const lastDuration = JSON.parse(localStorage.getItem('Duration') || '[]');
-
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/settimer" element={<SetTimer />} />
-        <Route
-          path="/timer"
-          element={
-            <MeditationPlayer hours={0} minutes={lastDuration} seconds={0} />
-          }
-        />
+        <Route path="/timer" element={<MeditationPlayer />} />
         <Route path="/challenge" element={<Challenge />}></Route>
-        <Route path="/dashboard " element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );

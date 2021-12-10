@@ -6,7 +6,7 @@ import Navigation from '../../components/Navigation/Navigation';
 export default function Dashboard(): JSX.Element {
   return (
     <Container>
-      {<CalendarView />}
+      <CalendarView />
       <Navigation activeLink="dashboard" />
     </Container>
   );
