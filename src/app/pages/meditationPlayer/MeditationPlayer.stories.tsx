@@ -6,10 +6,6 @@ export default {
   component: MeditationPlayer,
 };
 
-export const Play = (): JSX.Element => (
-  <MeditationPlayer hours={0} minutes={0} seconds={10} />
-);
+export const Play = (): JSX.Element => <MeditationPlayer />;
 
-export const Pause = (): JSX.Element => (
-  <MeditationPlayer hours={0} minutes={0} seconds={0} />
-);
+export const Pause = (): JSX.Element => <MeditationPlayer />;
