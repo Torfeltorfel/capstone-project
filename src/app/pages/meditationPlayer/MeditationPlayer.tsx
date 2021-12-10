@@ -16,21 +16,12 @@ declare global {
   type Howl = HowlType;
 }
 
-type MeditationPlayerProps = {
-  hours: number;
-  minutes: number;
-  seconds: number;
-};
-
-export default function MeditationPlayer({
-  hours,
-  minutes,
-  seconds,
-}: MeditationPlayerProps): JSX.Element {
+export default function MeditationPlayer(): JSX.Element {
+  const sessionDuration = JSON.parse(localStorage.getItem('Duration') || '[]');
   const [playGong] = useSound(gongSound);
   const [isPlaying, setIsPlaying] = useState(false);
   const [over, setOver] = useState(false);
-  const [[h, m, s], setTime] = useState([hours, minutes, seconds]);
+  const [[m, s], setTime] = useState([sessionDuration, 0]);
 
   function togglePlayPause() {
     setIsPlaying(!isPlaying);
@@ -43,8 +34,7 @@ export default function MeditationPlayer({
     const month = fullDate.getMonth() + 1;
     const year = fullDate.getFullYear();
     const currentSession = {
-      h: hours,
-      m: minutes,
+      m: sessionDuration,
       year: year,
       month: month,
       day: day,
@@ -54,21 +44,19 @@ export default function MeditationPlayer({
 
   const countdown = () => {
     if (!isPlaying || over) return;
-    if (h === 0 && m === 0 && s === 0) {
+    if (m === 0 && s === 0) {
       endMeditation();
-    } else if (m === 0 && s === 0) {
-      setTime([h - 1, 59, 59]);
     } else if (s == 0) {
-      setTime([h, m - 1, 59]);
+      setTime([m - 1, 59]);
     } else {
-      setTime([h, m, s - 1]);
+      setTime([m, s - 1]);
     }
   };
 
   useEffect(() => {
     const timerID = setInterval(() => countdown(), 1000);
     return () => clearInterval(timerID);
-  }, [[h, m, s]]);
+  }, [[m, s]]);
 
   return (
     <>
@@ -77,17 +65,15 @@ export default function MeditationPlayer({
           <BackButton />
         </StyledLink>
         <TotalTimeHeadline>unguided meditation</TotalTimeHeadline>
-        <TotalTime>
-          {hours < 1 ? `${minutes}min` : `${hours}h : ${minutes}min`}
-        </TotalTime>
+        <TotalTime>{sessionDuration} min</TotalTime>
         <PlayButtonContainer>
           <PlayButton onClick={togglePlayPause}>
             {isPlaying ? <PauseIcon /> : <PlayIcon />}
           </PlayButton>
         </PlayButtonContainer>
-        <Countdown>{`${h.toString().padStart(2, '0')}:${m
+        <Countdown>{`${m.toString().padStart(2, '0')}:${s
           .toString()
-          .padStart(2, '0')}:${s.toString().padStart(2, '0')}`}</Countdown>
+          .padStart(2, '0')} minutes`}</Countdown>
         {over ? <SuccessOverlay /> : ''}
       </PageContainer>
     </>
