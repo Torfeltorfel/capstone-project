@@ -21,7 +21,7 @@ function App(): JSX.Element {
           }
         />
         <Route path="/challenge" element={<Challenge />}></Route>
-        <Route path="/dashboard " element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
