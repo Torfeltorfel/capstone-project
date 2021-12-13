@@ -1,9 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from '../../components/Buttons/Button/Button';
 import Navigation from '../../components/Navigation/Navigation';
 import Tile from '../../components/Tile/Tile';
+/* import { getDatesBetweenDates } from '../../components/utils/getDatesBetweenDates'; */
 
 export default function Challenge(): JSX.Element {
+  const selectedEndDate = 10;
+  const today = new Date();
+  const endDate = new Date(today);
+  endDate.setDate(endDate.getDate() + selectedEndDate);
+
+  function getDatesBetweenDates(startDate: Date, endDate: Date) {
+    let dates: Date[] = [];
+    const theDate = new Date(startDate);
+    console.log(theDate);
+    while (theDate < endDate) {
+      dates = [...dates, new Date(theDate)];
+      theDate.setDate(theDate.getDate() + 1);
+    }
+    console.log(dates);
+    return dates;
+  }
+
   return (
     <>
       <Container>
@@ -14,7 +33,9 @@ export default function Challenge(): JSX.Element {
               These challenges help you to start your meditation habit.
             </Description>
           </TextContainer>
-
+          <Button onClick={() => getDatesBetweenDates(today, endDate)}>
+            Start Day Counter
+          </Button>
           <TileContainer>
             <Tile
               backgroundImageURL="src/app/components/Tile/assets/grass.jpeg"
