@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { getDatesBetweenDates } from '../utils/getDatesBetweenDates';
 
 type TileProps = {
   sessionDuration: number;
@@ -11,12 +12,13 @@ export default function Tile({
   sessionDuration,
   backgroundImageURL,
 }: TileProps): JSX.Element {
-  function saveDuration() {
+  function onClick(sessionDuration: number) {
     localStorage.setItem('Duration', JSON.stringify(sessionDuration));
+    getDatesBetweenDates(sessionDuration);
   }
 
   return (
-    <Link to="/timer" onClick={saveDuration}>
+    <Link to="/timer" onClick={() => onClick(sessionDuration)}>
       <Container
         backgroundImageURL={backgroundImageURL}
         sessionDuration={sessionDuration}

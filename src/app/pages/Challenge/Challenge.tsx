@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../../components/Buttons/Button/Button';
 import Navigation from '../../components/Navigation/Navigation';
 import Tile from '../../components/Tile/Tile';
-import { getDatesBetweenDates } from '../../components/utils/getDatesBetweenDates';
 
 export default function Challenge(): JSX.Element {
   return (
@@ -16,9 +14,6 @@ export default function Challenge(): JSX.Element {
               These challenges help you to start your meditation habit.
             </Description>
           </TextContainer>
-          <Button onClick={() => getDatesBetweenDates(10)}>
-            Start Day Counter
-          </Button>
           <TileContainer>
             <Tile
               backgroundImageURL="src/app/components/Tile/assets/grass.jpeg"
