@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import BackButton from '../../components/Buttons/BackButton/BackButton';
 import Button from '../../components/Buttons/Button/Button';
 import useLocalStorage from '../../hooks/useLocaleStorage';
+import plantIMG from './utilities/plant.png';
+import monsteraImg from './utilities/monstera.png';
 
 export default function SetTimer(): JSX.Element {
   const [duration, setDuration] = useLocalStorage(0, 'Duration');
@@ -14,7 +16,8 @@ export default function SetTimer(): JSX.Element {
         <StyledLink to="/home">
           <BackButton />
         </StyledLink>
-        <Header>Set up the Timer</Header>
+        <StyledIMG src={plantIMG}></StyledIMG>
+        <Header>Set up a time</Header>
         <TimeCircle>
           <Duration>{duration} Min</Duration>
         </TimeCircle>
@@ -25,6 +28,7 @@ export default function SetTimer(): JSX.Element {
           value={duration}
           onChange={(event) => setDuration(parseInt(event.target.value))}
         ></Range>
+        <StyledMonsteraImg src={monsteraImg}></StyledMonsteraImg>
         <Link to="/timer">
           <Button>Start</Button>
         </Link>
@@ -41,9 +45,27 @@ const PageContainer = styled.div`
   gap: 2rem;
   height: 100vh;
   width: 100vw;
-  background: var(--white);
+  background: var(--white-background);
   background-size: cover;
-  max-width: 25rem;
+  overflow: hidden;
+`;
+
+const StyledMonsteraImg = styled.img`
+  z-index: 100;
+  height: 14rem;
+  width: auto;
+  position: absolute;
+  transform: rotate(120deg) translateX(-18rem) translateY(-2.5rem);
+  overflow: hidden;
+`;
+
+const StyledIMG = styled.img`
+  z-index: 100;
+  height: 16rem;
+  width: auto;
+  position: absolute;
+  transform: rotate(0deg) translateX(-10rem) translateY(18rem) scaleX(-1);
+  filter: brightness(75%);
 `;
 
 const StyledLink = styled(Link)`
@@ -52,21 +74,24 @@ const StyledLink = styled(Link)`
 `;
 
 const Header = styled.h1`
-  color: var(--font-primary-dark);
-  text-transform: uppercase;
+  color: var(--grey-700);
+  text-transform: lowercase;
   font-size: 1.125rem;
   font-family: 'Merriweather';
+  letter-spacing: 0.1em;
 `;
 
 const TimeCircle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3rem solid var(--grey-300);
+  border: 3rem solid var(--grey-500);
+  opacity: 0.8;
   background-color: transparent;
   border-radius: 50%;
   height: 20rem;
   width: 20rem;
+  z-index: 400;
 `;
 
 const Duration = styled.p`
