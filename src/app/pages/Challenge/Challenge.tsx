@@ -4,9 +4,15 @@ import Navigation from '../../components/Navigation/Navigation';
 import Tile from '../../components/Tile/Tile';
 
 export default function Challenge(): JSX.Element {
-  const [challengeStarted, setChallengeStarted] = useState(false);
-  function handleChange() {
-    setChallengeStarted(!challengeStarted);
+  const [challengeStarted, setChallengeStarted] = useState({
+    twoMin: true,
+    tenMin: false,
+  });
+
+  function handleChange(id: string) {
+    setChallengeStarted((previous) => {
+      return { ...previous, [id]: !previous[id as keyof typeof previous] };
+    });
   }
 
   return (
@@ -24,13 +30,15 @@ export default function Challenge(): JSX.Element {
               backgroundImageURL="src/app/components/Tile/assets/grass.jpeg"
               sessionDuration={2}
               onStartChallenge={handleChange}
-              challengeStatus={challengeStarted}
+              challengeStatus={challengeStarted.twoMin}
+              id="twoMin"
             ></Tile>
             <Tile
               backgroundImageURL="src/app/components/Tile/assets/house.jpeg"
               sessionDuration={10}
               onStartChallenge={handleChange}
-              challengeStatus={challengeStarted}
+              challengeStatus={challengeStarted.tenMin}
+              id="tenMin"
             ></Tile>
           </TileContainer>
         </ContentContainer>

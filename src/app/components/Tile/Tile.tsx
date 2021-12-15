@@ -5,8 +5,9 @@ import styled from 'styled-components';
 type TileProps = {
   sessionDuration: number;
   backgroundImageURL: string;
-  onStartChallenge: () => void;
+  onStartChallenge: (id: string) => void;
   challengeStatus: boolean;
+  id: string;
 };
 
 export default function Tile({
@@ -14,21 +15,17 @@ export default function Tile({
   backgroundImageURL,
   onStartChallenge,
   challengeStatus,
+  id,
 }: TileProps): JSX.Element {
   /* localStorage.getItem('ChallengeStarted') === 'true' */
 
   return (
     <>
-      <Container
-        backgroundImageURL={backgroundImageURL}
-        sessionDuration={sessionDuration}
-        challengeStatus={challengeStatus}
-        onStartChallenge={onStartChallenge}
-      >
+      <Container backgroundImageURL={backgroundImageURL}>
         <p>{challengeStatus}</p>
         <button
           onClick={() => {
-            onStartChallenge();
+            onStartChallenge(id);
           }}
         >
           {challengeStatus ? 'Stop Challenge' : 'Start Challenge'}
