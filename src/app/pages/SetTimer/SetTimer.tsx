@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import BackButton from '../../components/Buttons/BackButton/BackButton';
 import Button from '../../components/Buttons/Button/Button';
+import useLocalStorage from '../../hooks/useLocaleStorage';
 
 export default function SetTimer(): JSX.Element {
-  const lastDuration = JSON.parse(localStorage.getItem('Duration') || '[]');
-  const [duration, setDuration] = useState(lastDuration);
-
-  function saveDuration() {
-    localStorage.setItem('Duration', JSON.stringify(duration));
-  }
+  const [duration, setDuration] = useLocalStorage(0, 'Duration');
 
   return (
     <>
@@ -30,7 +26,7 @@ export default function SetTimer(): JSX.Element {
           onChange={(event) => setDuration(parseInt(event.target.value))}
         ></Range>
         <Link to="/timer">
-          <Button onClick={saveDuration}>Start</Button>
+          <Button>Start</Button>
         </Link>
       </PageContainer>
     </>
@@ -101,3 +97,6 @@ const Range = styled.input`
     background: var(--green-simple);
   }
 `;
+function useStickyState(arg0: number, arg1: string): [any, any] {
+  throw new Error('Function not implemented.');
+}
