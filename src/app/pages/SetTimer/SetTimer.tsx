@@ -97,6 +97,3 @@ const Range = styled.input`
     background: var(--green-simple);
   }
 `;
-function useStickyState(arg0: number, arg1: string): [any, any] {
-  throw new Error('Function not implemented.');
-}
