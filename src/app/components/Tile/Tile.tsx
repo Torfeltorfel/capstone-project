@@ -1,37 +1,47 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { getDatesBetweenDates } from '../utils/getDatesBetweenDates';
+/* import { getDatesBetweenDates } from '../utils/getDatesBetweenDates'; */
 
 type TileProps = {
   sessionDuration: number;
   backgroundImageURL: string;
+  onStartChallenge: () => void;
+  challengeStatus: boolean;
 };
 
 export default function Tile({
   sessionDuration,
   backgroundImageURL,
+  onStartChallenge,
+  challengeStatus,
 }: TileProps): JSX.Element {
-  function onClick(sessionDuration: number) {
-    localStorage.setItem('Duration', JSON.stringify(sessionDuration));
-    getDatesBetweenDates(sessionDuration);
-  }
+  /* localStorage.getItem('ChallengeStarted') === 'true' */
 
   return (
-    <Link to="/timer" onClick={() => onClick(sessionDuration)}>
+    <>
       <Container
         backgroundImageURL={backgroundImageURL}
         sessionDuration={sessionDuration}
+        challengeStatus={challengeStatus}
+        onStartChallenge={onStartChallenge}
       >
+        <p>{challengeStatus}</p>
+        <button
+          onClick={() => {
+            onStartChallenge();
+          }}
+        >
+          {challengeStatus ? 'Stop Challenge' : 'Start Challenge'}
+        </button>
         <TextContainer>
           <Description>{sessionDuration} Minutes a Day for 30 Days</Description>
         </TextContainer>
       </Container>
-    </Link>
+    </>
   );
 }
 
-const Container = styled.div<TileProps>`
+const Container = styled.div<Partial<TileProps>>`
   border-radius: 0.75rem;
   box-shadow: var(--box-shadow);
   background-image: ${(props) => `url(${props.backgroundImageURL})`};

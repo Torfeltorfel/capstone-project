@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Navigation from '../../components/Navigation/Navigation';
 import Tile from '../../components/Tile/Tile';
 
 export default function Challenge(): JSX.Element {
+  const [challengeStarted, setChallengeStarted] = useState(false);
+  function handleChange() {
+    setChallengeStarted(!challengeStarted);
+  }
+
   return (
     <>
       <Container>
@@ -18,22 +23,14 @@ export default function Challenge(): JSX.Element {
             <Tile
               backgroundImageURL="src/app/components/Tile/assets/grass.jpeg"
               sessionDuration={2}
+              onStartChallenge={handleChange}
+              challengeStatus={challengeStarted}
             ></Tile>
             <Tile
               backgroundImageURL="src/app/components/Tile/assets/house.jpeg"
               sessionDuration={10}
-            ></Tile>
-            <Tile
-              backgroundImageURL="src/app/components/Tile/assets/mountains.jpeg"
-              sessionDuration={8}
-            ></Tile>
-            <Tile
-              backgroundImageURL="src/app/components/Tile/assets/waterfall.jpeg"
-              sessionDuration={5}
-            ></Tile>
-            <Tile
-              backgroundImageURL="src/app/components/Tile/assets/weeds.jpeg"
-              sessionDuration={15}
+              onStartChallenge={handleChange}
+              challengeStatus={challengeStarted}
             ></Tile>
           </TileContainer>
         </ContentContainer>
