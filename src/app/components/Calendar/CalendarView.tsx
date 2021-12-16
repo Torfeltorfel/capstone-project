@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import './styles.css';
 import useFetch from '../../hooks/useFetch';
 import type { ObjectID } from 'bson';
-import Calendar from 'react-calendar';
 
 type Session = {
   _id: ObjectID;
@@ -17,6 +16,7 @@ export default function CalendarView(): JSX.Element {
   const sessionArray = sessions.map((session) => {
     return session.session;
   });
+  console.log(sessions, sessionArray);
 
   return (
     <Container>
