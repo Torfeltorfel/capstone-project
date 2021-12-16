@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-/* import { getDatesBetweenDates } from '../utils/getDatesBetweenDates'; */
 
 type TileProps = {
   sessionDuration: number;
@@ -17,8 +16,6 @@ export default function Tile({
   challengeStatus,
   id,
 }: TileProps): JSX.Element {
-  /* localStorage.getItem('ChallengeStarted') === 'true' */
-
   return (
     <>
       <Container backgroundImageURL={backgroundImageURL}>
