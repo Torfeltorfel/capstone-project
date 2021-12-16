@@ -10,5 +10,8 @@ export const Grass = (): JSX.Element => (
   <Tile
     sessionDuration={2}
     backgroundImageURL="src/app/components/Tile/assets/grass.jpeg"
+    onStartChallenge={console.log}
+    id="eins"
+    challengeStatus={true}
   ></Tile>
 );
