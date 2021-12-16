@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Navigation from '../../components/Navigation/Navigation';
 import Tile from '../../components/Tile/Tile';
+import { formatDate } from '../../components/utils/formatDates';
+import { getDatesBetweenDates } from '../../components/utils/getDatesBetweenDates';
 
 export default function Challenge(): JSX.Element {
   const [challengeStarted, setChallengeStarted] = useState({
@@ -13,6 +15,11 @@ export default function Challenge(): JSX.Element {
     setChallengeStarted((previous) => {
       return { ...previous, [id]: !previous[id as keyof typeof previous] };
     });
+    const startDate = formatDate(new Date());
+    const challengeDays = getDatesBetweenDates(30).map((date) =>
+      formatDate(date)
+    );
+    localStorage.setItem(id, JSON.stringify({ startDate, challengeDays }));
   }
 
   return (
