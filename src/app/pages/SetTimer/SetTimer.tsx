@@ -33,6 +33,7 @@ export default function SetTimer(): JSX.Element {
           <Button>Start</Button>
         </Link>
       </PageContainer>
+      <ColorContainer />
     </>
   );
 }
@@ -45,22 +46,28 @@ const PageContainer = styled.div`
   gap: 2rem;
   height: 100vh;
   width: 100vw;
-  background: var(--white-background);
-  background-size: cover;
   overflow: hidden;
+  position: relative;
+  padding-bottom: 1rem;
+`;
+
+const ColorContainer = styled.div`
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: -500;
+  background: var(--white-background);
+  transform: translateY(-100%);
 `;
 
 const StyledMonsteraImg = styled.img`
-  z-index: 100;
   height: 14rem;
   width: auto;
   position: absolute;
   transform: rotate(120deg) translateX(-18rem) translateY(-2.5rem);
-  overflow: hidden;
 `;
 
 const StyledIMG = styled.img`
-  z-index: 100;
   height: 16rem;
   width: auto;
   position: absolute;
@@ -71,6 +78,7 @@ const StyledIMG = styled.img`
 const StyledLink = styled(Link)`
   align-self: flex-start;
   margin-left: 2rem;
+  margin-top: 2rem;
 `;
 
 const Header = styled.h1`
@@ -89,8 +97,8 @@ const TimeCircle = styled.div`
   opacity: 0.8;
   background-color: transparent;
   border-radius: 50%;
-  height: 20rem;
-  width: 20rem;
+  height: 18rem;
+  width: 18rem;
   z-index: 400;
 `;
 
