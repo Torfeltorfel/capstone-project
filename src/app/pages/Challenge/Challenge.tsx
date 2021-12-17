@@ -11,15 +11,36 @@ export default function Challenge(): JSX.Element {
     tenMin: false,
   });
 
-  function handleChange(id: string) {
+  function handleChange(
+    id: string,
+    sessionDuration: number,
+    challengeStatus: boolean
+  ) {
     setChallengeStarted((previous) => {
       return { ...previous, [id]: !previous[id as keyof typeof previous] };
     });
+
     const startDate = formatDate(new Date());
-    const challengeDays = getDatesBetweenDates(30).map((date) =>
+
+    const dateRangeFormatted = getDatesBetweenDates(30).map((date) =>
       formatDate(date)
     );
-    localStorage.setItem(id, JSON.stringify({ startDate, challengeDays }));
+    const challengeDays = dateRangeFormatted.reduce(
+      (acc: { [key: string]: boolean }, date) => {
+        acc[date] = false;
+        return acc;
+      },
+      {}
+    );
+    localStorage.setItem(
+      id,
+      JSON.stringify({
+        startDate,
+        challengeStatus,
+        sessionDuration,
+        challengeDays,
+      })
+    );
   }
 
   return (

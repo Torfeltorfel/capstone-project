@@ -4,7 +4,11 @@ import styled from 'styled-components';
 type TileProps = {
   sessionDuration: number;
   backgroundImageURL: string;
-  onStartChallenge: (id: string) => void;
+  onStartChallenge: (
+    id: string,
+    sessionDuration: number,
+    challengeStatus: boolean
+  ) => void;
   challengeStatus: boolean;
   id: string;
 };
@@ -22,7 +26,7 @@ export default function Tile({
         <p>{challengeStatus}</p>
         <button
           onClick={() => {
-            onStartChallenge(id);
+            onStartChallenge(id, sessionDuration, challengeStatus);
           }}
         >
           {challengeStatus ? 'Stop Challenge' : 'Start Challenge'}

@@ -8,6 +8,5 @@ export function getDatesBetweenDates(duration: number): Date[] {
     dates = [...dates, new Date(today)];
     today.setDate(today.getDate() + 1);
   }
-  console.log(dates);
   return dates;
 }
