@@ -3,7 +3,7 @@ dotenv.config();
 
 import express from 'express';
 import { ObjectId } from 'mongodb';
-import { connectDatabase, getSessions } from './app/utils/database';
+import { connectDatabase, getSessions } from './utils/database';
 
 if (!process.env.MONGODB_URI) {
   throw new Error("Couldn't connect to the database");
