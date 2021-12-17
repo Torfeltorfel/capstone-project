@@ -42,6 +42,12 @@ export default function MeditationPlayer(): JSX.Element {
     setOver(true), playGong(), postSession(currentSession, '/api/sessions');
   }
 
+  const data = JSON.parse(localStorage.getItem('twoMin') || '[]');
+  const challengeDays = data.challengeDays;
+  const today = new Date();
+  const formatted = today.toISOString().split('T')[0];
+  const challengeDays2 = { ...challengeDays, [formatted]: true };
+
   const countdown = () => {
     if (!isPlaying || over) return;
     if (m === 0 && s === 0) {
@@ -141,3 +147,6 @@ const Countdown = styled.p`
   color: var(--white);
   font-family: 'Open Sans';
 `;
+function formatDates(arg0: Date) {
+  throw new Error('Function not implemented.');
+}
