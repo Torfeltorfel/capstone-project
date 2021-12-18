@@ -21,7 +21,6 @@ export default function CalendarView(): JSX.Element {
   return (
     <Container>
       <Header>Your Meditation sessions</Header>
-
       {/*       <Calendar
         value={sessionArray}
         colorPrimary="var(--green-background)"

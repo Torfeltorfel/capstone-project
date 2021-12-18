@@ -28,7 +28,7 @@ export default function SetTimer(): JSX.Element {
           value={duration}
           onChange={(event) => setDuration(parseInt(event.target.value))}
         ></Range>
-        <StyledMonsteraImg src={monsteraImg}></StyledMonsteraImg>
+        <StyledMonsteraImg src={monsteraImg} />
         <Link to="/timer">
           <Button>Start</Button>
         </Link>
