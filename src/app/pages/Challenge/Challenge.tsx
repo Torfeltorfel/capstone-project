@@ -1,9 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
 import Navigation from '../../components/Navigation/Navigation';
-import Tile from '../../components/Tile/Tile';
+import { formatDate } from '../../components/utils/formatDates';
+import { getDatesBetweenDates } from '../../components/utils/getDatesBetweenDates';
 
-export default function Challenge(): JSX.Element {
+type ChallengeProps = {
+  challengeStatus: boolean;
+  handleChallengeStatus: () => void;
+};
+
+export default function Challenge({
+  challengeStatus,
+  handleChallengeStatus,
+}: ChallengeProps): JSX.Element {
+  function setupChallenge() {
+    const dateRangeFormatted = getDatesBetweenDates(1).map((date) =>
+      formatDate(date)
+    );
+    const challengeDays = dateRangeFormatted.reduce(
+      (acc: { [key: string]: boolean }, date) => {
+        acc[date] = false;
+        return acc;
+      },
+      {}
+    );
+    localStorage.setItem(
+      'Challenge',
+      JSON.stringify({
+        challengeDays,
+      })
+    );
+  }
+
+  function stopChallenge() {
+    localStorage.removeItem('Challenge');
+  }
+
+  challengeStatus ? setupChallenge() : stopChallenge();
+
   return (
     <>
       <Container>
@@ -14,29 +48,9 @@ export default function Challenge(): JSX.Element {
               These challenges help you to start your meditation habit.
             </Description>
           </TextContainer>
-
-          <TileContainer>
-            <Tile
-              backgroundImageURL="src/app/components/Tile/assets/grass.jpeg"
-              sessionDuration={2}
-            ></Tile>
-            <Tile
-              backgroundImageURL="src/app/components/Tile/assets/house.jpeg"
-              sessionDuration={10}
-            ></Tile>
-            <Tile
-              backgroundImageURL="src/app/components/Tile/assets/mountains.jpeg"
-              sessionDuration={8}
-            ></Tile>
-            <Tile
-              backgroundImageURL="src/app/components/Tile/assets/waterfall.jpeg"
-              sessionDuration={5}
-            ></Tile>
-            <Tile
-              backgroundImageURL="src/app/components/Tile/assets/weeds.jpeg"
-              sessionDuration={15}
-            ></Tile>
-          </TileContainer>
+          <button onClick={handleChallengeStatus}>
+            {challengeStatus ? 'Stop Challenge' : 'Start Challenge'}
+          </button>
         </ContentContainer>
         <Navigation activeLink="challenge" />
       </Container>
@@ -79,10 +93,4 @@ const Description = styled.p`
   margin: 0.2rem 0.5rem;
   font-size: var(--p-size);
   font-family: 'Open Sans';
-`;
-
-const TileContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
 `;

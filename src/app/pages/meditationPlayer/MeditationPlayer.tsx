@@ -16,7 +16,13 @@ declare global {
   type Howl = HowlType;
 }
 
-export default function MeditationPlayer(): JSX.Element {
+type MeditationPlayerProps = {
+  handleChallengeStatus: () => void;
+};
+
+export default function MeditationPlayer({
+  handleChallengeStatus,
+}: MeditationPlayerProps): JSX.Element {
   const sessionDuration = JSON.parse(localStorage.getItem('Duration') || '[]');
   const [playGong] = useSound(gongSound);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -39,7 +45,27 @@ export default function MeditationPlayer(): JSX.Element {
       month: month,
       day: day,
     };
-    setOver(true), playGong(), postSession(currentSession, '/api/sessions');
+    setOver(true),
+      playGong(),
+      postSession(currentSession, '/api/sessions'),
+      markSessionInChallenge();
+  }
+
+  function markSessionInChallenge() {
+    const data = JSON.parse(localStorage.getItem('Challenge') || '[]');
+    const challengeDays = data.challengeDays;
+    const today = new Date();
+    const todayFormatted = today.toISOString().split('T')[0];
+    const challengeDaysUpdated = {
+      ...data.challengeDays,
+      [todayFormatted]: true,
+    };
+    localStorage.setItem('Challenge', JSON.stringify(challengeDaysUpdated));
+    const keys = Object.keys(challengeDays);
+    const lastEntry = keys[keys.length - 1];
+    todayFormatted >= lastEntry
+      ? handleChallengeStatus()
+      : console.log('not identical');
   }
 
   const countdown = () => {

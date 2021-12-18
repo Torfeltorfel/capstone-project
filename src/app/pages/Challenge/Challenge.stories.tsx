@@ -6,4 +6,6 @@ export default {
   component: Challenge,
 };
 
-export const Default = (): JSX.Element => <Challenge />;
+export const Default = (): JSX.Element => (
+  <Challenge challengeStatus={true} handleChallengeStatus={console.log} />
+);

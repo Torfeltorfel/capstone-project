@@ -1,35 +1,45 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 type TileProps = {
   sessionDuration: number;
   backgroundImageURL: string;
+  onStartChallenge: (
+    id: string,
+    sessionDuration: number,
+    challengeStatus: boolean
+  ) => void;
+  challengeStatus: boolean;
+  id: string;
 };
 
 export default function Tile({
   sessionDuration,
   backgroundImageURL,
+  onStartChallenge,
+  challengeStatus,
+  id,
 }: TileProps): JSX.Element {
-  function saveDuration() {
-    localStorage.setItem('Duration', JSON.stringify(sessionDuration));
-  }
-
   return (
-    <Link to="/timer" onClick={saveDuration}>
-      <Container
-        backgroundImageURL={backgroundImageURL}
-        sessionDuration={sessionDuration}
-      >
+    <>
+      <Container backgroundImageURL={backgroundImageURL}>
+        <p>{challengeStatus}</p>
+        <button
+          onClick={() => {
+            onStartChallenge(id, sessionDuration, challengeStatus);
+          }}
+        >
+          {challengeStatus ? 'Stop Challenge' : 'Start Challenge'}
+        </button>
         <TextContainer>
           <Description>{sessionDuration} Minutes a Day for 30 Days</Description>
         </TextContainer>
       </Container>
-    </Link>
+    </>
   );
 }
 
-const Container = styled.div<TileProps>`
+const Container = styled.div<Partial<TileProps>>`
   border-radius: 0.75rem;
   box-shadow: var(--box-shadow);
   background-image: ${(props) => `url(${props.backgroundImageURL})`};
