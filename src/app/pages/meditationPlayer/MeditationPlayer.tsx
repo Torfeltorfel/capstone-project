@@ -47,6 +47,7 @@ export default function MeditationPlayer(): JSX.Element {
   const today = new Date();
   const formatted = today.toISOString().split('T')[0];
   const challengeDays2 = { ...challengeDays, [formatted]: true };
+  localStorage.setItem('twoMin', JSON.stringify(challengeDays2));
 
   const countdown = () => {
     if (!isPlaying || over) return;

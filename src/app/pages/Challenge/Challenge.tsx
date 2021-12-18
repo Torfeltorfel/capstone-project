@@ -19,12 +19,11 @@ export default function Challenge(): JSX.Element {
     setChallengeStarted((previous) => {
       return { ...previous, [id]: !previous[id as keyof typeof previous] };
     });
-
     const startDate = formatDate(new Date());
-
-    const dateRangeFormatted = getDatesBetweenDates(30).map((date) =>
+    const dateRangeFormatted = getDatesBetweenDates(1).map((date) =>
       formatDate(date)
     );
+
     const challengeDays = dateRangeFormatted.reduce(
       (acc: { [key: string]: boolean }, date) => {
         acc[date] = false;
