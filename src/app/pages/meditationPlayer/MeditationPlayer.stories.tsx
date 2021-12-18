@@ -6,6 +6,10 @@ export default {
   component: MeditationPlayer,
 };
 
-export const Play = (): JSX.Element => <MeditationPlayer />;
+export const Play = (): JSX.Element => (
+  <MeditationPlayer handleChallengeStatus={console.log} />
+);
 
-export const Pause = (): JSX.Element => <MeditationPlayer />;
+export const Pause = (): JSX.Element => (
+  <MeditationPlayer handleChallengeStatus={console.log} />
+);
