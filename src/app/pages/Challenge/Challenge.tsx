@@ -1,21 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import Navigation from '../../components/Navigation/Navigation';
-import Tile from '../../components/Tile/Tile';
 import { formatDate } from '../../components/utils/formatDates';
 import { getDatesBetweenDates } from '../../components/utils/getDatesBetweenDates';
-import useLocalStorage from '../../hooks/useLocaleStorage';
 
-export default function Challenge(): JSX.Element {
-  const [challengeStarted, setChallengeStarted] = useLocalStorage(
-    false,
-    'ChallengeStatus'
-  );
+type ChallengeProps = {
+  challengeStatus: boolean;
+  handleChallengeStatus: () => void;
+};
 
-  function handleChange() {
-    setChallengeStarted(!challengeStarted);
-  }
-
+export default function Challenge({
+  challengeStatus,
+  handleChallengeStatus,
+}: ChallengeProps): JSX.Element {
   function setupChallenge() {
     const dateRangeFormatted = getDatesBetweenDates(1).map((date) =>
       formatDate(date)
@@ -39,7 +36,7 @@ export default function Challenge(): JSX.Element {
     localStorage.removeItem('Challenge');
   }
 
-  challengeStarted ? setupChallenge() : stopChallenge();
+  challengeStatus ? setupChallenge() : stopChallenge();
 
   return (
     <>
@@ -51,15 +48,9 @@ export default function Challenge(): JSX.Element {
               These challenges help you to start your meditation habit.
             </Description>
           </TextContainer>
-          <TileContainer>
-            <Tile
-              backgroundImageURL="src/app/components/Tile/assets/grass.jpeg"
-              sessionDuration={2}
-              onStartChallenge={handleChange}
-              challengeStatus={challengeStarted}
-              id="twoMin"
-            ></Tile>
-          </TileContainer>
+          <button onClick={handleChallengeStatus}>
+            {challengeStatus ? 'Stop Challenge' : 'Start Challenge'}
+          </button>
         </ContentContainer>
         <Navigation activeLink="challenge" />
       </Container>
