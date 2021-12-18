@@ -83,10 +83,11 @@ const TextContainer = styled.div`
 
 const Header = styled.h1`
   margin: 0.2rem 0.5rem;
+  color: var(--green-simple);
   font-family: 'Merriweather';
   font-size: var(--h1-size);
   text-transform: uppercase;
-  color: var(--green-simple);
+  letter-spacing: var(--letterSpacing);
 `;
 
 const Description = styled.p`
