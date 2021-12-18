@@ -2,7 +2,6 @@ import React from 'react';
 import '@amir04lm26/react-modern-calendar-date-picker/lib/DatePicker.css';
 import { Calendar } from '@amir04lm26/react-modern-calendar-date-picker';
 import styled from 'styled-components';
-import './styles.css';
 import useFetch from '../../hooks/useFetch';
 import type { ObjectID } from 'bson';
 
@@ -21,11 +20,7 @@ export default function CalendarView(): JSX.Element {
   return (
     <Container>
       <Header>Your Meditation sessions</Header>
-      <Calendar
-        value={sessionArray}
-        colorPrimary="var(--green-background)"
-        calendarClassName="customCalendar"
-      />
+      <Calendar value={sessionArray} colorPrimary="var(--green-background)" />
     </Container>
   );
 }
@@ -37,6 +32,10 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-const Header = styled.h1`
-  color: var(--font-primary-dark);
+const Header = styled.h2`
+  margin: 0.1rem 0.5rem;
+  font-family: 'Open Sans';
+  font-size: var(--h2-size);
+  text-transform: uppercase;
+  color: var(--grey-700);
 `;

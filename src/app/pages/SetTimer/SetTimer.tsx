@@ -86,7 +86,7 @@ const Header = styled.h1`
   text-transform: lowercase;
   font-size: 1.125rem;
   font-family: 'Merriweather';
-  letter-spacing: 0.1em;
+  letter-spacing: var(--letterSpacing);
 `;
 
 const TimeCircle = styled.div`
