@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import CalendarView from '../../components/Calendar/CalendarView';
 import Navigation from '../../components/Navigation/Navigation';
 
 export default function Dashboard(): JSX.Element {
   return (
     <Container>
+      <CalendarView />
       <Navigation activeLink="dashboard" />
     </Container>
   );
