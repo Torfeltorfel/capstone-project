@@ -167,6 +167,3 @@ const Countdown = styled.p`
   color: var(--white);
   font-family: 'Open Sans';
 `;
-function formatDates(arg0: Date) {
-  throw new Error('Function not implemented.');
-}

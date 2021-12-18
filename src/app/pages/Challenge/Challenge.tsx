@@ -94,9 +94,3 @@ const Description = styled.p`
   font-size: var(--p-size);
   font-family: 'Open Sans';
 `;
-
-const TileContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-`;
