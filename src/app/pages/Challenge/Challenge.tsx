@@ -1,29 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Navigation from '../../components/Navigation/Navigation';
 import Tile from '../../components/Tile/Tile';
 import { formatDate } from '../../components/utils/formatDates';
 import { getDatesBetweenDates } from '../../components/utils/getDatesBetweenDates';
+import useLocalStorage from '../../hooks/useLocaleStorage';
 
 export default function Challenge(): JSX.Element {
-  const [challengeStarted, setChallengeStarted] = useState({
-    twoMin: true,
-    tenMin: false,
-  });
+  const [challengeStarted, setChallengeStarted] = useLocalStorage(
+    false,
+    'ChallengeStatus'
+  );
 
-  function handleChange(
-    id: string,
-    sessionDuration: number,
-    challengeStatus: boolean
-  ) {
-    setChallengeStarted((previous) => {
-      return { ...previous, [id]: !previous[id as keyof typeof previous] };
-    });
-    const startDate = formatDate(new Date());
+  function handleChange() {
+    setChallengeStarted(!challengeStarted);
+  }
+
+  function setupChallenge() {
     const dateRangeFormatted = getDatesBetweenDates(1).map((date) =>
       formatDate(date)
     );
-
     const challengeDays = dateRangeFormatted.reduce(
       (acc: { [key: string]: boolean }, date) => {
         acc[date] = false;
@@ -32,15 +28,18 @@ export default function Challenge(): JSX.Element {
       {}
     );
     localStorage.setItem(
-      id,
+      'Challenge',
       JSON.stringify({
-        startDate,
-        challengeStatus,
-        sessionDuration,
         challengeDays,
       })
     );
   }
+
+  function stopChallenge() {
+    localStorage.removeItem('Challenge');
+  }
+
+  challengeStarted ? setupChallenge() : stopChallenge();
 
   return (
     <>
@@ -57,15 +56,8 @@ export default function Challenge(): JSX.Element {
               backgroundImageURL="src/app/components/Tile/assets/grass.jpeg"
               sessionDuration={2}
               onStartChallenge={handleChange}
-              challengeStatus={challengeStarted.twoMin}
+              challengeStatus={challengeStarted}
               id="twoMin"
-            ></Tile>
-            <Tile
-              backgroundImageURL="src/app/components/Tile/assets/house.jpeg"
-              sessionDuration={10}
-              onStartChallenge={handleChange}
-              challengeStatus={challengeStarted.tenMin}
-              id="tenMin"
             ></Tile>
           </TileContainer>
         </ContentContainer>
