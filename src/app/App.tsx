@@ -22,7 +22,10 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/settimer" element={<SetTimer />} />
-        <Route path="/timer" element={<MeditationPlayer />} />
+        <Route
+          path="/timer"
+          element={<MeditationPlayer handleChallengeStatus={handleChange} />}
+        />
         <Route
           path="/challenge"
           element={

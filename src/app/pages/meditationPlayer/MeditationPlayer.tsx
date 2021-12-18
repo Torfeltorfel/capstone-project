@@ -16,7 +16,13 @@ declare global {
   type Howl = HowlType;
 }
 
-export default function MeditationPlayer(): JSX.Element {
+type MeditationPlayerProps = {
+  handleChallengeStatus: () => void;
+};
+
+export default function MeditationPlayer({
+  handleChallengeStatus,
+}: MeditationPlayerProps): JSX.Element {
   const sessionDuration = JSON.parse(localStorage.getItem('Duration') || '[]');
   const [playGong] = useSound(gongSound);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -42,16 +48,24 @@ export default function MeditationPlayer(): JSX.Element {
     setOver(true),
       playGong(),
       postSession(currentSession, '/api/sessions'),
-      checkOffInChallenge();
+      markSessionInChallenge();
   }
 
-  function checkOffInChallenge() {
-    const data = JSON.parse(localStorage.getItem('twoMin') || '[]');
+  function markSessionInChallenge() {
+    const data = JSON.parse(localStorage.getItem('Challenge') || '[]');
     const challengeDays = data.challengeDays;
     const today = new Date();
-    const formatted = today.toISOString().split('T')[0];
-    const challengeDays2 = { ...challengeDays, [formatted]: true };
-    localStorage.setItem('twoMin', JSON.stringify(challengeDays2));
+    const todayFormatted = today.toISOString().split('T')[0];
+    const challengeDaysUpdated = {
+      ...data.challengeDays,
+      [todayFormatted]: true,
+    };
+    localStorage.setItem('Challenge', JSON.stringify(challengeDaysUpdated));
+    const keys = Object.keys(challengeDays);
+    const lastEntry = keys[keys.length - 1];
+    todayFormatted >= lastEntry
+      ? handleChallengeStatus()
+      : console.log('not identical');
   }
 
   const countdown = () => {
