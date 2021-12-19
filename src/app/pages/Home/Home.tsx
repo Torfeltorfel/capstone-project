@@ -7,7 +7,7 @@ export default function Home(): JSX.Element {
   return (
     <PageContainer>
       <ContentContainer>
-        <Header>Welcome back</Header>
+        <Header>Welcome back, Torben</Header>
       </ContentContainer>
       <Navigation activeLink="home" />
     </PageContainer>
@@ -34,5 +34,7 @@ const ContentContainer = styled.div`
 const Header = styled.h1`
   font-family: 'Merryweather';
   font-size: var(--h1-size);
+  color: var(--black-100);
   margin-top: 5rem;
+  letter-spacing: var(--letterspacing);
 `;
