@@ -14,7 +14,7 @@ export default function Button({
   return <StyledButton onClick={onClick}>{children}</StyledButton>;
 }
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   border-radius: 1em;
   background-image: var(--green-background);
   color: #fff;
