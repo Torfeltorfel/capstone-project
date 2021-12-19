@@ -27,9 +27,9 @@ const StyledButton = styled.button`
   }
 `;
 
-export const ButtonRed = styled(StyledButton)`
+export const ButtonAlarm = styled(StyledButton)`
   border: 0.063rem solid;
   border-color: var(--red-500);
-  background: transparent;
-  color: red;
+  background-image: none;
+  color: var(--red-500);
 `;

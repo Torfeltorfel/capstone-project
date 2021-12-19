@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Button, { ButtonRed } from '../../components/Buttons/Button/Button';
+import Button, { ButtonAlarm } from '../../components/Buttons/Button/Button';
 import Navigation from '../../components/Navigation/Navigation';
 import { formatDate } from '../../components/utils/formatDates';
 import { getDatesBetweenDates } from '../../components/utils/getDatesBetweenDates';
@@ -68,9 +68,12 @@ export default function Challenge({
             </>
           )}
           {challengeStatus ? (
-            <ButtonRed onClick={handleChallengeStatus}>
-              Stop Challenge
-            </ButtonRed>
+            <StartedChallengeContainer>
+              <ButtonAlarm onClick={handleChallengeStatus}>
+                Stop Challenge
+              </ButtonAlarm>
+              <Button>Meditate now</Button>
+            </StartedChallengeContainer>
           ) : (
             <Button onClick={handleChallengeStatus}>Start Challenge</Button>
           )}
@@ -108,6 +111,11 @@ const CounterContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 1rem;
+`;
+
+const StartedChallengeContainer = styled.div`
+  display: flex;
   gap: 1rem;
 `;
 
