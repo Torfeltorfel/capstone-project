@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Navigation from '../../components/Navigation/Navigation';
 import { formatDate } from '../../components/utils/formatDates';
@@ -13,8 +13,10 @@ export default function Challenge({
   challengeStatus,
   handleChallengeStatus,
 }: ChallengeProps): JSX.Element {
+  const [count, setCount] = useState(5);
+
   function setupChallenge() {
-    const dateRangeFormatted = getDatesBetweenDates(1).map((date) =>
+    const dateRangeFormatted = getDatesBetweenDates(count).map((date) =>
       formatDate(date)
     );
     const challengeDays = dateRangeFormatted.reduce(
@@ -48,6 +50,16 @@ export default function Challenge({
               These challenges help you to start your meditation habit.
             </Description>
           </TextContainer>
+          {challengeStatus ? (
+            ''
+          ) : (
+            <CounterContainer>
+              <button onClick={() => setCount((count) => count - 1)}>-</button>
+              <p>{count}</p>
+              <button onClick={() => setCount((count) => count + 1)}>+</button>
+            </CounterContainer>
+          )}
+
           <button onClick={handleChallengeStatus}>
             {challengeStatus ? 'Stop Challenge' : 'Start Challenge'}
           </button>
@@ -79,6 +91,16 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   margin: 1rem 0;
+`;
+
+const CounterContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const Header = styled.h1`
