@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Button from '../../components/Buttons/Button/Button';
+import Button, { ButtonRed } from '../../components/Buttons/Button/Button';
 import Navigation from '../../components/Navigation/Navigation';
 import { formatDate } from '../../components/utils/formatDates';
 import { getDatesBetweenDates } from '../../components/utils/getDatesBetweenDates';
@@ -54,20 +54,26 @@ export default function Challenge({
           {challengeStatus ? (
             ''
           ) : (
-            <CounterContainer>
-              <PlusMinusButton onClick={() => setCount((count) => count - 1)}>
-                -
-              </PlusMinusButton>
-              <Durationfield>{count} days</Durationfield>
-              <PlusMinusButton onClick={() => setCount((count) => count + 1)}>
-                +
-              </PlusMinusButton>
-            </CounterContainer>
+            <>
+              <CounterHeader>Choose the duration</CounterHeader>
+              <CounterContainer>
+                <PlusMinusButton onClick={() => setCount((count) => count - 1)}>
+                  -
+                </PlusMinusButton>
+                <Durationfield>{count} days</Durationfield>
+                <PlusMinusButton onClick={() => setCount((count) => count + 1)}>
+                  +
+                </PlusMinusButton>
+              </CounterContainer>
+            </>
           )}
-
-          <Button onClick={handleChallengeStatus}>
-            {challengeStatus ? 'Stop Challenge' : 'Start Challenge'}
-          </Button>
+          {challengeStatus ? (
+            <ButtonRed onClick={handleChallengeStatus}>
+              Stop Challenge
+            </ButtonRed>
+          ) : (
+            <Button onClick={handleChallengeStatus}>Start Challenge</Button>
+          )}
         </ContentContainer>
         <Navigation activeLink="challenge" />
       </Container>
@@ -105,6 +111,14 @@ const CounterContainer = styled.div`
   gap: 1rem;
 `;
 
+const CounterHeader = styled.h2`
+  color: var(--grey-900);
+  font-size: 0.8rem;
+  font-family: 'Open Sans';
+  font-weight: 500;
+  text-transform: lowercase;
+`;
+
 const Header = styled.h1`
   margin: 0.2rem 0.5rem;
   color: var(--green-simple);
@@ -136,5 +150,5 @@ const PlusMinusButton = styled.button`
 
 const Durationfield = styled.p`
   color: var(--grey-900);
-  font: 'Open Sans';
+  font-family: 'Open Sans';
 `;

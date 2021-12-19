@@ -26,3 +26,10 @@ const StyledButton = styled.button`
     opacity: 70%;
   }
 `;
+
+export const ButtonRed = styled(StyledButton)`
+  border: 0.063rem solid;
+  border-color: var(--red-500);
+  background: transparent;
+  color: red;
+`;
