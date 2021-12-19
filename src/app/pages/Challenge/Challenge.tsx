@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Button from '../../components/Buttons/Button/Button';
 import Navigation from '../../components/Navigation/Navigation';
 import { formatDate } from '../../components/utils/formatDates';
 import { getDatesBetweenDates } from '../../components/utils/getDatesBetweenDates';
@@ -54,15 +55,19 @@ export default function Challenge({
             ''
           ) : (
             <CounterContainer>
-              <button onClick={() => setCount((count) => count - 1)}>-</button>
-              <p>{count}</p>
-              <button onClick={() => setCount((count) => count + 1)}>+</button>
+              <PlusMinusButton onClick={() => setCount((count) => count - 1)}>
+                -
+              </PlusMinusButton>
+              <Durationfield>{count} days</Durationfield>
+              <PlusMinusButton onClick={() => setCount((count) => count + 1)}>
+                +
+              </PlusMinusButton>
             </CounterContainer>
           )}
 
-          <button onClick={handleChallengeStatus}>
+          <Button onClick={handleChallengeStatus}>
             {challengeStatus ? 'Stop Challenge' : 'Start Challenge'}
-          </button>
+          </Button>
         </ContentContainer>
         <Navigation activeLink="challenge" />
       </Container>
@@ -96,11 +101,8 @@ const TextContainer = styled.div`
 const CounterContainer = styled.div`
   display: flex;
   flex-direction: row;
-`;
-
-const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 `;
 
 const Header = styled.h1`
@@ -116,4 +118,23 @@ const Description = styled.p`
   margin: 0.2rem 0.5rem;
   font-size: var(--p-size);
   font-family: 'Open Sans';
+`;
+
+const PlusMinusButton = styled.button`
+  height: 2rem;
+  width: 2rem;
+  color: var(--white);
+  background-image: var(--green-background);
+  border: none;
+  border-radius: 50%;
+  font-weight: 900;
+  background-color: transparent;
+  &:active {
+    opacity: 0.5;
+  }
+`;
+
+const Durationfield = styled.p`
+  color: var(--grey-900);
+  font: 'Open Sans';
 `;
