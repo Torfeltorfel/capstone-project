@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Button, { ButtonAlarm } from '../../components/Buttons/Button/Button';
+import Button, {
+  ButtonAlarm,
+  StyledButton,
+} from '../../components/Buttons/Button/Button';
 import Navigation from '../../components/Navigation/Navigation';
 import { formatDate } from '../../components/utils/formatDates';
 import { getDatesBetweenDates } from '../../components/utils/getDatesBetweenDates';
@@ -69,10 +72,25 @@ export default function Challenge({
           )}
           {challengeStatus ? (
             <StartedChallengeContainer>
-              <ButtonAlarm onClick={handleChallengeStatus}>
-                Stop Challenge
-              </ButtonAlarm>
-              <Button>Meditate now</Button>
+              <ChallengeHeader>Current Challenge</ChallengeHeader>
+              <Durationfield>
+                Challenge Started <br />
+                <StyledSpan>19.12.2021 </StyledSpan>
+              </Durationfield>
+              <Durationfield>
+                Challenge Ends <br />
+                <StyledSpan>26.12.2021 </StyledSpan>
+              </Durationfield>
+              <Durationfield>
+                Completed Days <br />
+                <StyledSpan>0/7 </StyledSpan>
+              </Durationfield>
+              <ButtonContainer>
+                <RedButton onClick={handleChallengeStatus}>
+                  Stop Challenge
+                </RedButton>
+                <GreenButton>Meditate now</GreenButton>
+              </ButtonContainer>
             </StartedChallengeContainer>
           ) : (
             <Button onClick={handleChallengeStatus}>Start Challenge</Button>
@@ -89,7 +107,7 @@ const Container = styled.div`
   grid-template-rows: auto 3.75rem;
   height: 100vh;
   max-width: 100vw;
-  background-image: var(--white-background);
+  background-image: var(--white);
 `;
 
 const ContentContainer = styled.div`
@@ -116,7 +134,27 @@ const CounterContainer = styled.div`
 
 const StartedChallengeContainer = styled.div`
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  width: 100%;
+  padding: 1.5rem;
+  border-color: var(--grey-700);
+  border-radius: 1.5rem;
+  box-shadow: var(--box-shadow);
+  background-color: var(--grey-100);
+`;
+
+const ChallengeHeader = styled.h3`
+  font-family: 'Merriweather';
+  color: var(--green-700);
+  font-weight: 700;
+  letter-spacing: var(--letterSpacing);
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
 `;
 
 const CounterHeader = styled.h2`
@@ -157,6 +195,24 @@ const PlusMinusButton = styled.button`
 `;
 
 const Durationfield = styled.p`
-  color: var(--grey-900);
+  color: var(--grey-700);
+  font-weight: 900;
   font-family: 'Open Sans';
+  text-transform: uppercase;
+  font-size: 0.8rem;
+`;
+
+const RedButton = styled(ButtonAlarm)`
+  font-size: 0.7rem;
+  background-color: white;
+`;
+
+const GreenButton = styled(StyledButton)`
+  font-size: 0.7rem;
+`;
+
+const StyledSpan = styled.span`
+  color: var(--black-100);
+  font-weight: 900;
+  font-size: 1.2rem;
 `;
