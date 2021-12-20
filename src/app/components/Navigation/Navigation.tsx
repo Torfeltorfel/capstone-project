@@ -15,7 +15,7 @@ export default function Navigation({
 }: NavigationProps): JSX.Element {
   return (
     <Container>
-      <Link to="/home">
+      <Link to="/">
         <HomeIcon
           stroke={
             activeLink === 'home' ? 'var(--green-simple)' : 'var(--grey-700)'
