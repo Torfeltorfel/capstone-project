@@ -13,9 +13,9 @@ export default function SetTimer(): JSX.Element {
   return (
     <>
       <PageContainer>
-        <StyledLink to="/home">
+        <BackButtonContainer>
           <BackButton />
-        </StyledLink>
+        </BackButtonContainer>
         <StyledIMG src={plantIMG}></StyledIMG>
         <Header>Set up a time</Header>
         <TimeCircle>
@@ -75,7 +75,7 @@ const StyledIMG = styled.img`
   filter: brightness(75%);
 `;
 
-const StyledLink = styled(Link)`
+const BackButtonContainer = styled.div`
   align-self: flex-start;
   margin-left: 2rem;
   margin-top: 2rem;

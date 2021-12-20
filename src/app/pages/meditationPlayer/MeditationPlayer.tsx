@@ -8,7 +8,6 @@ import PauseIcon from './assets/PauseIcon';
 import BackgroundImage from './assets/bg.jpeg';
 import type { Howl as HowlType } from 'howler';
 import SuccessOverlay from '../../components/SuccessOverlay/SuccessPage';
-import { Link } from 'react-router-dom';
 import BackButton from '../../components/Buttons/BackButton/BackButton';
 import postSession from '../../components/utils/postSession';
 
@@ -87,9 +86,9 @@ export default function MeditationPlayer({
   return (
     <>
       <PageContainer>
-        <StyledLink to="/settimer">
+        <BackButtonContainer>
           <BackButton />
-        </StyledLink>
+        </BackButtonContainer>
         <HeaderContainer>
           <TotalTimeHeadline>unguided meditation</TotalTimeHeadline>
           <TotalTime>{sessionDuration} min</TotalTime>
@@ -122,9 +121,10 @@ const PageContainer = styled.div`
   max-width: 25rem;
 `;
 
-const StyledLink = styled(Link)`
+const BackButtonContainer = styled.div`
   align-self: flex-start;
   margin-left: 2rem;
+  margin-top: 2rem;
 `;
 
 const HeaderContainer = styled.div`
