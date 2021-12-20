@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Button, {
-  ButtonAlarm,
-  StyledButton,
-} from '../../components/Buttons/Button/Button';
+import Button, { ButtonAlarm } from '../../components/Buttons/Button/Button';
 import Navigation from '../../components/Navigation/Navigation';
 import { formatDate } from '../../components/utils/formatDates';
 import { getDatesBetweenDates } from '../../components/utils/getDatesBetweenDates';
