@@ -48,6 +48,7 @@ const PageContainer = styled.div`
   overflow: hidden;
   position: relative;
   padding-bottom: 1rem;
+  max-width: 25rem;
 `;
 
 const ColorContainer = styled.div`
