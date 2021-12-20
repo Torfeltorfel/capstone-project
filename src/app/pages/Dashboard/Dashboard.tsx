@@ -19,7 +19,7 @@ const PageContainer = styled.div`
   display: grid;
   grid-template-rows: auto 3.75rem;
   height: 100vh;
-  max-width: 100vw;
+  max-width: 25rem;
   background-image: var(--white);
 `;
 

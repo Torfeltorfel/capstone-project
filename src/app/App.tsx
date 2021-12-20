@@ -20,7 +20,7 @@ function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/settimer" element={<SetTimer />} />
         <Route
           path="/timer"
