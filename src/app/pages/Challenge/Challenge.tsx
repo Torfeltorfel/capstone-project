@@ -71,7 +71,7 @@ export default function Challenge({
                 <RedButton onClick={handleChallengeStatus}>
                   Stop Challenge
                 </RedButton>
-                <GreenButton>Meditate now</GreenButton>
+                <GreenButton href="/settimer">Meditate now</GreenButton>
               </ButtonContainer>
             </StartedChallengeContainer>
           ) : (
@@ -115,6 +115,7 @@ const ContentContainer = styled.div`
   align-items: center;
   padding: 2rem;
   overflow-y: scroll;
+  gap: 3rem;
 `;
 
 const Header = styled.h1`
@@ -190,6 +191,7 @@ const ButtonContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
+  gap: 2rem;
 `;
 
 const PlusMinusButton = styled.button`
@@ -215,12 +217,26 @@ const Durationfield = styled.p`
 `;
 
 const RedButton = styled(ButtonAlarm)`
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   background-color: white;
 `;
 
-const GreenButton = styled(StyledButton)`
-  font-size: 0.7rem;
+const GreenButton = styled.a`
+  border-radius: 1em;
+  border: 1px solid;
+  border-color: var(--green-simple);
+  background-image: var(--green-background);
+  color: #fff;
+  box-shadow: var(--box-shadow);
+  padding: 0.8em 2em;
+  font-size: 0.6rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Open Sans';
+  &:active {
+    opacity: 70%;
+  }
 `;
 
 const StyledSpan = styled.span`
