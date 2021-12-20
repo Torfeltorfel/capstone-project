@@ -1,6 +1,7 @@
 import React from 'react';
 import '@amir04lm26/react-modern-calendar-date-picker/lib/DatePicker.css';
 import { Calendar } from '@amir04lm26/react-modern-calendar-date-picker';
+import './CalendarView.css';
 import styled from 'styled-components';
 import useFetch from '../../hooks/useFetch';
 import type { ObjectID } from 'bson';
@@ -20,7 +21,11 @@ export default function CalendarView(): JSX.Element {
   return (
     <Container>
       <Header>Your Meditation sessions</Header>
-      <Calendar value={sessionArray} colorPrimary="var(--green-background)" />
+      <Calendar
+        value={sessionArray}
+        colorPrimary="var(--green-background)"
+        calendarClassName="calendar"
+      />
     </Container>
   );
 }

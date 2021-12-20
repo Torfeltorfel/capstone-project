@@ -14,7 +14,7 @@ export default function Button({
   return <StyledButton onClick={onClick}>{children}</StyledButton>;
 }
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   border-radius: 1em;
   background-image: var(--green-background);
   color: #fff;
@@ -25,4 +25,11 @@ const StyledButton = styled.button`
   &:active {
     opacity: 70%;
   }
+`;
+
+export const ButtonAlarm = styled(StyledButton)`
+  border: 0.063rem solid;
+  border-color: var(--red-500);
+  background-image: none;
+  color: var(--red-500);
 `;

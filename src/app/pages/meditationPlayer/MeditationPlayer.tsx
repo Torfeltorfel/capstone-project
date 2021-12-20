@@ -90,8 +90,10 @@ export default function MeditationPlayer({
         <StyledLink to="/settimer">
           <BackButton />
         </StyledLink>
-        <TotalTimeHeadline>unguided meditation</TotalTimeHeadline>
-        <TotalTime>{sessionDuration} min</TotalTime>
+        <HeaderContainer>
+          <TotalTimeHeadline>unguided meditation</TotalTimeHeadline>
+          <TotalTime>{sessionDuration} min</TotalTime>
+        </HeaderContainer>
         <PlayButtonContainer>
           <PlayButton onClick={togglePlayPause}>
             {isPlaying ? <PauseIcon /> : <PlayIcon />}
@@ -123,6 +125,12 @@ const PageContainer = styled.div`
 const StyledLink = styled(Link)`
   align-self: flex-start;
   margin-left: 2rem;
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const TotalTimeHeadline = styled.h3`
