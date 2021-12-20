@@ -104,6 +104,7 @@ const Container = styled.div`
   height: 100vh;
   max-width: 100vw;
   background-image: var(--white);
+  max-width: 25rem;
 `;
 
 const ContentContainer = styled.div`
