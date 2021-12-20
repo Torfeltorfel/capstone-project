@@ -48,28 +48,10 @@ export default function Challenge({
     <>
       <Container>
         <ContentContainer>
-          <TextContainer>
+          <div>
             <Header>Challenges</Header>
-            <Description>
-              These challenges help you to start your meditation habit.
-            </Description>
-          </TextContainer>
-          {challengeStatus ? (
-            ''
-          ) : (
-            <>
-              <CounterHeader>Choose the duration</CounterHeader>
-              <CounterContainer>
-                <PlusMinusButton onClick={() => setCount((count) => count - 1)}>
-                  -
-                </PlusMinusButton>
-                <Durationfield>{count} days</Durationfield>
-                <PlusMinusButton onClick={() => setCount((count) => count + 1)}>
-                  +
-                </PlusMinusButton>
-              </CounterContainer>
-            </>
-          )}
+            <Description>Build a habit by meditating every day.</Description>
+          </div>
           {challengeStatus ? (
             <StartedChallengeContainer>
               <ChallengeHeader>Current Challenge</ChallengeHeader>
@@ -93,7 +75,24 @@ export default function Challenge({
               </ButtonContainer>
             </StartedChallengeContainer>
           ) : (
-            <Button onClick={handleChallengeStatus}>Start Challenge</Button>
+            <SetupContainer>
+              <div>
+                <SetupHeader>Set up a new Challenge</SetupHeader>
+                <SetupSubHeader>Choose the duration</SetupSubHeader>
+              </div>
+
+              <CounterButtonContainer>
+                <PlusMinusButton onClick={() => setCount((count) => count - 1)}>
+                  -
+                </PlusMinusButton>
+                <Durationfield>{count} days</Durationfield>
+                <PlusMinusButton onClick={() => setCount((count) => count + 1)}>
+                  +
+                </PlusMinusButton>
+              </CounterButtonContainer>
+
+              <Button onClick={handleChallengeStatus}>Start Challenge</Button>
+            </SetupContainer>
           )}
         </ContentContainer>
         <Navigation activeLink="challenge" />
@@ -114,18 +113,28 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem;
   overflow-y: scroll;
 `;
 
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin: 1rem 0;
+const Header = styled.h1`
+  color: var(--green-simple);
+  font-family: 'Merriweather';
+  font-size: var(--h1-size);
+  text-transform: uppercase;
+  letter-spacing: var(--letterSpacing);
+  margin: 0;
 `;
 
-const CounterContainer = styled.div`
+const Description = styled.p`
+  color: var(--grey-700);
+  font-size: 0.8rem;
+  font-family: 'Open Sans';
+  font-weight: 700;
+  margin: 0;
+`;
+
+const CounterButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -143,6 +152,32 @@ const StartedChallengeContainer = styled.div`
   background-color: var(--grey-100);
 `;
 
+const SetupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+  gap: 3rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+`;
+
+const SetupHeader = styled.h2`
+  font-family: 'Merriweather';
+  color: var(--green-simple);
+  font-size: var(--h2-size);
+  margin-bottom: 0rem;
+`;
+
+const SetupSubHeader = styled.h2`
+  color: var(--grey-700);
+  font-size: 0.8rem;
+  font-family: 'Open Sans';
+  font-weight: 700;
+  margin: 0;
+`;
+
 const ChallengeHeader = styled.h3`
   font-family: 'Merriweather';
   color: var(--green-700);
@@ -155,29 +190,6 @@ const ButtonContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
-`;
-
-const CounterHeader = styled.h2`
-  color: var(--grey-900);
-  font-size: 0.8rem;
-  font-family: 'Open Sans';
-  font-weight: 500;
-  text-transform: lowercase;
-`;
-
-const Header = styled.h1`
-  margin: 0.2rem 0.5rem;
-  color: var(--green-simple);
-  font-family: 'Merriweather';
-  font-size: var(--h1-size);
-  text-transform: uppercase;
-  letter-spacing: var(--letterSpacing);
-`;
-
-const Description = styled.p`
-  margin: 0.2rem 0.5rem;
-  font-size: var(--p-size);
-  font-family: 'Open Sans';
 `;
 
 const PlusMinusButton = styled.button`
