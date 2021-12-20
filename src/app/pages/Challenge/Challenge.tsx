@@ -54,11 +54,11 @@ export default function Challenge({
               <ChallengeHeader>Current Challenge</ChallengeHeader>
               <Durationfield>
                 Challenge Started <br />
-                <StyledSpan>19.12.2021 </StyledSpan>
+                <StyledSpan>20.12.2021 </StyledSpan>
               </Durationfield>
               <Durationfield>
                 Challenge Ends <br />
-                <StyledSpan>26.12.2021 </StyledSpan>
+                <StyledSpan>27.12.2021 </StyledSpan>
               </Durationfield>
               <Durationfield>
                 Completed Days <br />
@@ -102,7 +102,6 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: auto 3.75rem;
   height: 100vh;
-  max-width: 100vw;
   background-image: var(--white);
   max-width: 25rem;
 `;
